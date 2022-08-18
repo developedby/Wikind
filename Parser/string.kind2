@@ -1,0 +1,18 @@
+// Consumes and returns a string from the code if the start matches
+// Backtracks on failure
+Parser.string (str: String) : (Parser String) {
+  do Parser {
+    ask code = Parser.take_code
+    match Pair p = String.pop_prefix code str { new =>
+      do Parser {
+        ask Parser.set_code p.snd
+        if String.is_nil p.fst {
+          Parser.empty "string"
+        } else {
+          Parser.pure p.fst
+        }
+
+      }
+    }
+  }
+}

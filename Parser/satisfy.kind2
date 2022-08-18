@@ -1,0 +1,12 @@
+// Consumes the head and checks if it satisfies a condition
+// Fails if it doesn't
+Parser.satisfy (f: Char -> Bool) : Parser Char {
+  do Parser {
+    ask x = Parser.item
+    if (f x) {
+      Parser.pure x
+    } else {
+      Parser.empty "satisfy"
+    }
+  }
+}

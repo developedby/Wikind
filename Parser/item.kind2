@@ -1,0 +1,9 @@
+// Consumes and returns the head
+// Fails on eoi
+Parser.item : Parser Char {
+  code =>
+    match String code {
+      nil  => Parser.Result.fail code "item"
+      cons => Parser.Result.done code.tail code.head
+    }
+}

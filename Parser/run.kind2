@@ -1,0 +1,9 @@
+// Runs a parser and returns the result, or none
+// FIXME: for some reason, renaming prs to parser makes the type checker loop; investigate
+Parser.run <r: Type> (prs: Parser r) (code: String) : Maybe r {
+  let pa = prs code
+  match Parser.Result pa {
+    done => Maybe.some pa.result
+    fail => Maybe.none
+  }
+}

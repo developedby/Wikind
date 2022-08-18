@@ -1,0 +1,8 @@
+Parser.Test.count_char {
+  let p = Parser.count_char 'a'
+  Parser.run p "aaaaasd"
+}
+
+Main {
+  Parser.Test.count_char
+}

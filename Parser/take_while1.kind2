@@ -1,0 +1,12 @@
+// Take at least 1 character from the code while a condition passes
+// Fails if no characters are taken
+Parser.take_while1 (cond: Char -> Bool) : Parser String {
+  do Parser {
+    ask r = Parser.take_while cond
+    if String.is_nil r {
+      Parser.empty "take_while1"
+    } else {
+      Parser.pure r
+    }
+  }
+}

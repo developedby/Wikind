@@ -1,0 +1,9 @@
+// Runs a parser, returning whether it succeeds or not
+// Never fails
+Parser.to_bool <a> (prs: Parser a) : Parser Bool {
+  code =>
+    match Parser.Result r = (prs code) {
+      done => Parser.Result.done r.code Bool.true
+      fail => Parser.Result.done r.code Bool.false
+    }
+}

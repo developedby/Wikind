@@ -1,0 +1,5 @@
+// Consumes and returns a sequence of letters 'a-z' and 'A-Z'
+// Fails when no char is taken
+Parser.take_alpha1 : Parser String {
+  Parser.take_while1 (c => Char.is_alpha c)
+}

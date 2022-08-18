@@ -1,0 +1,7 @@
+// A parser that succeeds only if there's nothing more to parse
+Parser.done : Parser Unit {
+  code => match String code {
+    nil  => Parser.Result.done String.nil Unit.new
+    cons => Parser.Result.fail code "done"
+  }
+}

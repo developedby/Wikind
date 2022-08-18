@@ -1,0 +1,5 @@
+// Consume the head and return it if it's equal to a character
+// Fails if it isn't
+Parser.char (c: Char) : Parser Char {
+  Parser.satisfy (x => (Char.equal c x))
+}

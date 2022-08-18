@@ -1,0 +1,4 @@
+// Returns the code left to be parsed
+Parser.take_code : Parser String {
+  code => Parser.Result.done String.nil code
+}

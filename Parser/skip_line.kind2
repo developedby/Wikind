@@ -1,0 +1,4 @@
+// Skips everything up to the line end
+Parser.skip_line : Parser Bool {
+  Parser.skip_while (c => Bool.not (Char.equal 10))
+}

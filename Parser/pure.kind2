@@ -1,0 +1,3 @@
+Parser.pure <r: Type> (value: r) : Parser r {
+  code => Parser.Result.done code value 
+}

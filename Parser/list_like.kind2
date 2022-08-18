@@ -1,0 +1,14 @@
+/// Evaluates a list-like parser, with an opener, elements, separator, and closer.
+Parser.list_like <o> <s> <c> <e>
+  (p_open  : Parser o)
+  (p_sep   : Parser s)
+  (p_close : Parser c)
+  (p_elem  : Parser e)
+: Parser (List e) {
+  do Parser {
+    ask p_open
+    ask elems = Parser.separator p_sep p_elem
+    ask p_close
+    return elems
+  }
+}

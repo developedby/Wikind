@@ -1,0 +1,12 @@
+// Take characters from the code while a condition passes
+Parser.take_while (cond: Char -> Bool) : Parser String {
+  do Parser {
+    ask code = Parser.take_code
+    match Pair p = String.pop_while code cond { new =>
+      do Parser {
+        ask Parser.set_code p.snd
+        return p.fst
+      }
+    }
+  }
+}

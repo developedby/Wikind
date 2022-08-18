@@ -1,0 +1,16 @@
+/// Checks if a dry-run of the first parser succeeds.
+/// If so, applies the second parser and returns `some`.
+/// If no, returns `none`.
+Parser.guard <a> <b> (head: Parser a) (body: Parser b) : Parser (Maybe b) {
+  do Parser {
+    ask success = Parser.dry (Parser.to_bool head)
+    if success {
+      do Parser {
+        ask r = body
+        return Maybe.some r
+      }
+    } else {
+      Parser.pure Maybe.none
+    }
+  }
+}

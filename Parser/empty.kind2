@@ -1,0 +1,4 @@
+// A parser that always fails
+Parser.empty <a> (msg: String) : Parser a {
+  code => Parser.Result.fail code msg
+}

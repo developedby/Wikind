@@ -1,0 +1,10 @@
+// Returns the result of a parser without modifying the state
+Parser.dry <a> (prs: Parser a) : Parser a {
+  code =>
+    match Parser.Result r = (prs code) {
+      done =>
+        Parser.Result.done code r.result // Duping code
+      fail =>
+        Parser.Result.fail code r.msg
+    }
+}

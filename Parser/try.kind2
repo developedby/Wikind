@@ -1,0 +1,9 @@
+// On success, return the result, on failure backtrack and return none
+// Never fails
+Parser.try <a> (prs: Parser a) : Parser (Maybe a) {
+  code =>
+    match Parser.Result r = (prs code) {
+      done => Parser.Result.done r.code (Maybe.some r.result)
+      fail => Parser.Result.done code    Maybe.none
+    }
+}

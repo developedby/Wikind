@@ -1,0 +1,10 @@
+// Tries the first parser. If it fails, backtrack and try the second one
+Parser.or <a> (x : Parser a) (y : Parser a) : (Parser a) {
+  do Parser {
+    ask mx = Parser.try x
+    match Maybe mx {
+      some => Parser.pure mx.value
+      none => y
+    }
+  }
+}

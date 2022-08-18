@@ -1,0 +1,21 @@
+// Parses a sequence of elements separated by some criteria
+// Example: To match "1,2,3,4,5,6,70", use
+//          `(Parser.separator Parser.u60_decimal (Parser.char ','))`
+//          The result will be a list with the numbers.
+Parser.separator <s> <e> (p_sep: Parser s) (p_elem: Parser e) : Parser (List e) {
+  do Parser {
+    ask me = Parser.try p_elem
+    match Maybe me {
+      none => Parser.pure []
+      some =>
+        let sep_and_elem = do Parser {
+          ask p_sep
+          p_elem
+        }
+        do Parser {
+          ask tail = Parser.until_fail sep_and_elem
+          return List.cons me.value tail 
+        }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+// Applies a parser repeatedly until it fails, at least once
+// Returns a list of all results
+// Fails if the first try fails
+Parser.repeated1 <a> (prs: Parser a) : Parser (List a) {
+  do Parser {
+    ask head = prs
+    ask tail = Parser.until_fail prs
+    return (List.cons head tail) 
+  }
+}

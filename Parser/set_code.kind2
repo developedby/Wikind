@@ -1,0 +1,5 @@
+// Sets the code left to be parsed
+Parser.set_code (new: String) : Parser Unit {
+  code =>
+    Parser.Result.done new Unit.new
+}

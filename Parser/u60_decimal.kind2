@@ -1,0 +1,7 @@
+// A parser that matches an integer decimal number like 32867
+Parser.u60_decimal : Parser U60 {
+  do Parser {
+    ask num = Parser.take_while1 (c => Char.is_decimal c)
+    return U60.read_decimal num
+  }
+}
