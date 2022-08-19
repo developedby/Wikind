@@ -1,0 +1,12 @@
+Bits.sqrt (s : Bits) : Bits {
+  let aprox = (x => Bits.tail (Bits.add x (Bits.div s x))) :: Bits -> Bits
+  let accum = (x =>
+    let x1 = (aprox x)
+    if Bits.ltn x1 x {
+      Maybe.some (aprox x1)
+    } else {
+      Maybe.none
+    }
+  ) :: Bits -> (Maybe Bits)
+  Maybe.unfold accum (Bits.tail s)
+}

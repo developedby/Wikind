@@ -1,0 +1,1 @@
+Array.tip <a: Type> (x: a) : Array a Nat.zero

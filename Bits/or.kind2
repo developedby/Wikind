@@ -1,0 +1,7 @@
+Bits.or (a: Bits) (b: Bits) : Bits
+Bits.or  Bits.e      b          = b
+Bits.or  a           Bits.e     = a
+Bits.or (Bits.o ap) (Bits.o bp) = Bits.o (Bits.or ap bp)
+Bits.or (Bits.o ap) (Bits.i bp) = Bits.i (Bits.or ap bp)
+Bits.or (Bits.i ap) (Bits.o bp) = Bits.i (Bits.or ap bp)
+Bits.or (Bits.i ap) (Bits.i bp) = Bits.i (Bits.or ap bp)

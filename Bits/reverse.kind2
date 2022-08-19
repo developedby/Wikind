@@ -1,6 +1,10 @@
-// Reverts the entire bit structure
-// Example: (Bits.reverse (Bits.i Bits.e)) -> (Bits.o Bits.e)
-Bits.reverse (b: Bits) : Bits
-Bits.reverse (Bits.e)      = (Bits.e)
-Bits.reverse (Bits.o pred) = (Bits.i (Bits.reverse pred))
-Bits.reverse (Bits.i pred) = (Bits.o (Bits.reverse pred))
+// Reverse the order of the Bits
+// Example: (Bits.reverse (Bits.o (Bits.o (Bits.i Bits.e)))) -> (Bits.i (Bits.o (Bits.o Bits.e)))
+Bits.reverse (a: Bits) : Bits {
+  Bits.reverse.tco a Bits.e
+}
+
+Bits.reverse.tco (a: Bits) (r: Bits) : Bits
+Bits.reverse.tco  Bits.e     r = r
+Bits.reverse.tco (Bits.o ap) r = Bits.reverse.tco ap (Bits.o r)
+Bits.reverse.tco (Bits.i ap) r = Bits.reverse.tco ap (Bits.i r)

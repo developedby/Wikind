@@ -1,0 +1,17 @@
+// Adds two words, discarding any resulting carry bit
+Word.add <size: Nat> (a: Word size) (b: Word size) : Word size {
+  Word.add.go a b Bool.false
+}
+
+Word.add.go <size: Nat> (a: Word size) (b: Word size) (carry: Bool) : Word size
+// The only Word.e case since a and b have same size
+Word.add.go s Word.e Word.e c = Word.e
+// Add the lsb of each word + the carry.
+Word.add.go (Nat.succ sp) (Word.o as ap) (Word.o bs bp) Bool.false = Word.o (Word.add.go ap bp Bool.false) // 0 + 0 + 0 = 00
+Word.add.go (Nat.succ sp) (Word.o as ap) (Word.o bs bp) Bool.true  = Word.i (Word.add.go ap bp Bool.false) // 0 + 0 + 1 = 01
+Word.add.go (Nat.succ sp) (Word.o as ap) (Word.i bs bp) Bool.false = Word.i (Word.add.go ap bp Bool.false) // 0 + 1 + 0 = 01
+Word.add.go (Nat.succ sp) (Word.o as ap) (Word.i bs bp) Bool.true  = Word.o (Word.add.go ap bp Bool.true ) // 0 + 1 + 1 = 10
+Word.add.go (Nat.succ sp) (Word.i as ap) (Word.o bs bp) Bool.false = Word.i (Word.add.go ap bp Bool.false) // 1 + 0 + 0 = 01
+Word.add.go (Nat.succ sp) (Word.i as ap) (Word.o bs bp) Bool.true  = Word.o (Word.add.go ap bp Bool.true ) // 1 + 0 + 1 = 10
+Word.add.go (Nat.succ sp) (Word.i as ap) (Word.i bs bp) Bool.false = Word.o (Word.add.go ap bp Bool.true ) // 1 + 1 + 0 = 10
+Word.add.go (Nat.succ sp) (Word.i as ap) (Word.i bs bp) Bool.true  = Word.i (Word.add.go ap bp Bool.true ) // 1 + 1 + 1 = 11

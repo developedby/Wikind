@@ -1,0 +1,13 @@
+// Compares a to b numerically
+Word.cmp <size: Nat> (a: Word size) (b: Word size) : Cmp
+Word.cmp size a b = Word.cmp.go a b Cmp.eql
+
+
+Word.cmp.go <size: Nat> (a: Word size) (b: Word size) (cmp: Cmp) : Cmp
+
+Word.cmp.go s Word.e Word.e cmp = cmp
+
+Word.cmp.go (Nat.succ sp) (Word.o as ap) (Word.o bs bp) cmp = Word.cmp.go ap bp cmp
+Word.cmp.go (Nat.succ sp) (Word.o as ap) (Word.i bs bp) cmp = Word.cmp.go ap bp Cmp.ltn
+Word.cmp.go (Nat.succ sp) (Word.i as ap) (Word.o bs bp) cmp = Word.cmp.go ap bp cmp
+Word.cmp.go (Nat.succ sp) (Word.i as ap) (Word.i bs bp) cmp = Word.cmp.go ap bp Cmp.gtn

@@ -1,0 +1,33 @@
+Bits.to_len.preserve_length (n: Nat) (bits: Bits) : Equal (Bits.length (Bits.to_len n bits)) n
+Bits.to_len.preserve_length Nat.zero bits = Equal.refl
+
+// Bits.to_len.preserve_length (Nat.succ np) Bits.e = ?
+
+// Bits.to_len.preserve_length(n : Nat, bits : Bits) : Bits.length(Bits.to_len(n, bits)) == n
+//   case n {
+//     succ : case bits {
+//       e : 
+//         let rec = Bits.to_len.preserve_length(n.pred, Bits.e)
+//         let rec = Equal.apply!!!!(Nat.succ, rec)
+//         let simpl = refl :: Bits.length.go(Bits.to_len(n.pred,Bits.e),1) == Bits.length(Bits.to_len(Nat.succ(n.pred),Bits.e))
+//         case simpl {
+//           refl : 
+//             rec :: rewrite X in X == Nat.succ(n.pred) with Bits.length.succ(Bits.to_len(n.pred,Bits.e), 0)
+//         }!
+//       o : 
+//         let rec = Bits.to_len.preserve_length(n.pred, bits.pred)
+//         let rec = Equal.apply!!!!(Nat.succ, rec)
+//         let simpl = refl :: Bits.length.go(Bits.to_len(n.pred,bits.pred),1) == Bits.length(Bits.to_len(Nat.succ(n.pred), Bits.o(bits.pred)))
+//         case simpl {
+//           refl : rec :: rewrite X in X == Nat.succ(n.pred) with Bits.length.succ(Bits.to_len(n.pred, bits.pred), 0)
+//         }!
+//       i : 
+//         let rec = Bits.to_len.preserve_length(n.pred, bits.pred)
+//         let rec = Equal.apply!!!!(Nat.succ, rec)
+//         let simpl = refl :: Bits.length.go(Bits.to_len(n.pred,bits.pred),1) == Bits.length(Bits.to_len(Nat.succ(n.pred), Bits.i(bits.pred)))
+//         case simpl {
+//           refl : rec :: rewrite X in X == Nat.succ(n.pred) with Bits.length.succ(Bits.to_len(n.pred, bits.pred), 0)
+//         }!
+//     }!
+//     zero : refl
+//   }!

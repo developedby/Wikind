@@ -1,0 +1,7 @@
+Word.pow <size: Nat> (a: Word size) (b: Word size) : Word size
+Word.pow s a b = Word.pow.go a b (Word.inc (Word.to_zero a))
+
+Word.pow.go <a_size: Nat> <size: Nat> (a: Word a_size) (b: Word size) (acc: Word a_size) : Word a_size
+Word.pow.go as s a  Word.e          acc = acc
+Word.pow.go as s a (Word.o bs pred) acc = Word.pow.go (Word.mul a a) pred             acc
+Word.pow.go as s a (Word.i bs pred) acc = Word.pow.go (Word.mul a a) pred (Word.mul a acc)

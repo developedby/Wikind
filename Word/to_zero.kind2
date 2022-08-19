@@ -1,0 +1,4 @@
+Word.to_zero <size: Nat> (word: Word size) : Word size
+Word.to_zero s  Word.e          = Word.e
+Word.to_zero s (Word.o s_ pred) = Word.o (Word.to_zero pred)
+Word.to_zero s (Word.i s_ pred) = Word.o (Word.to_zero pred)

@@ -1,0 +1,7 @@
+Nat.add.succ_both (a: Nat) (b: Nat) : Equal (Nat.add (Nat.succ a) (Nat.succ b)) (Nat.succ (Nat.succ (Nat.add a b)))
+
+Nat.add.succ_both Nat.zero b = Equal.refl
+
+Nat.add.succ_both (Nat.succ a.pred) b =
+  let h = Nat.add.succ_both a.pred b
+  Equal.apply (x => Nat.succ x) h

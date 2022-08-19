@@ -1,0 +1,10 @@
+// Returns length of the word until the last Word.i bit
+// This is the length without leading zeroes
+Word.bit_length <size: Nat> (word: Word size) : Nat {
+  Word.bit_length.go size word Nat.zero Nat.zero
+}
+
+Word.bit_length.go <size: Nat> (word: Word size) (c: Nat) (n: Nat) : Nat
+Word.bit_length.go s  Word.e          c n = n
+Word.bit_length.go s (Word.o s_ w) c n = Word.bit_length.go w (Nat.succ c) n
+Word.bit_length.go s (Word.i s_ w) c n = Word.bit_length.go w (Nat.succ c) (Nat.succ c)

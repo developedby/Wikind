@@ -1,0 +1,7 @@
+Word.leading_ones <size: Nat> (word: Word size) : Nat
+Word.leading_ones size word = Word.leading_ones.go word Nat.zero
+
+Word.leading_ones.go <size: Nat> (word: Word size) (n: Nat) : Nat
+Word.leading_ones.go s  Word.e          n = n
+Word.leading_ones.go s (Word.o s_ pred) n = Word.leading_ones.go pred  Nat.zero
+Word.leading_ones.go s (Word.i s_ pred) n = Word.leading_ones.go pred (Nat.succ n)

@@ -1,0 +1,4 @@
+Bits.tail (a: Bits) : Bits
+Bits.tail (Bits.o ap) = ap
+Bits.tail (Bits.i ap) = ap
+Bits.tail  Bits.e     = Bits.e

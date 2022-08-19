@@ -1,0 +1,35 @@
+// Divides a word by another, truncating
+Word.div <size: Nat> (a: Word size) (b: Word size) : Word size {
+  let zero   = Word.to_zero a
+  let a_bits = Word.bit_length a
+  let b_bits = Word.bit_length b
+
+  if Nat.ltn a_bits b_bits {
+    Word.zero
+  } else {
+    let shift = Nat.sub a_bits b_bits
+    let shifted = Word.shift_left b shift
+    Word.div.go shift a shifted Word.zero
+  }
+}
+
+Word.div.go <size: Nat> (shift: Nat) (sub_cp: Word size) (shift_cp: Word size) (val: Word size) : Word size
+Word.div.go s shift sub_cp shift_cp val =
+  let one = Word.inc (Word.to_zero sub_cp)
+  let shifted_pair =
+    if Word.gte sub_cp shift_cp {
+      let mask = Word.shift_left one shift
+      Pair.new Bool.true (Word.or val mask)
+    } else {
+      Pair.new Bool.false val
+    }
+  let bit_on  = Pair.fst shifted_pair
+  let new_val = Pair.snd shifted_pair
+
+  match Nat shift {
+    zero => new_val
+    succ =>
+      let new_shift_cp = Word.shift_right shift_cp Nat.one
+      let new_sub_cp = if bit_on { Word.sub sub_cp shift_cp } else { sub_cp }
+      Word.div.go shift.pred new_sub_cp new_shift_cp new_val
+  }

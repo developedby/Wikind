@@ -1,0 +1,6 @@
+Nat.gcd.succ
+  (a : Nat)
+  (b : Nat)
+: Equal (Nat.gcd (Nat.succ a) b) (Nat.gcd (Nat.mod b (Nat.succ a)) (Nat.succ a)) {
+  Equal.refl
+}

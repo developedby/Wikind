@@ -1,2 +1,2 @@
 // Automatically derived from Bits/Map/_.type
-Bits.Map.tie <a: Type> (val: (Maybe a)) (left: (Bits.Map a)) (right: (Bits.Map a)) : (Bits.Map a)
+Bits.Map.tie <a: Type> (value: (Maybe a)) (left: (Bits.Map a)) (right: (Bits.Map a)) : (Bits.Map a)

@@ -1,0 +1,5 @@
+// Changing the length of a Bits to its current length does nothing
+Bits.to_len.identity (bits : Bits) : Equal (Bits.to_len (Bits.length bits) bits) bits
+Bits.to_len.identity  Bits.e     = Equal.refl
+Bits.to_len.identity (Bits.o bp) = Equal.apply (x => Bits.o x) (Bits.to_len.identity bp)
+Bits.to_len.identity (Bits.i bp) = Equal.apply (x => Bits.i x) (Bits.to_len.identity bp)

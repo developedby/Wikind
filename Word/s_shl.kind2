@@ -1,0 +1,6 @@
+Word.s_shl <size: Nat> (n: Word size) (val: Word size) : Word size
+Word.s_shl size n val =
+  if Word.is_neg n then
+    Word.shr (Word.neg n) val
+  else
+    Word.shl n val

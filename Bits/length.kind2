@@ -1,0 +1,5 @@
+// Returns the length of the Bits
+Bits.length (b: Bits) : Nat
+Bits.length  Bits.e    = Nat.zero
+Bits.length (Bits.o b) = Nat.succ (Bits.length b)
+Bits.length (Bits.i b) = Nat.succ (Bits.length b)

@@ -1,0 +1,6 @@
+Word.s_pow <size: Nat> (a: Word size) (b: Word size) : Word size
+Word.s_pow size a b =
+  if Word.is_neg b then
+    Word.zero
+  else
+    Word.pow a b

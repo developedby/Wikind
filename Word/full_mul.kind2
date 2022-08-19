@@ -1,0 +1,5 @@
+Word.full_mul (size: Nat) (a: Word size) (b: Word size) : Word (Nat.add size size)
+Word.full_mul size a b =
+  let a = Word.with_size (Nat.add size size) a
+  let b = Word.with_size (Nat.add size size) b
+  Word.mul a b

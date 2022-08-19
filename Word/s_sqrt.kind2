@@ -1,0 +1,6 @@
+Word.s_sqrt <size: Nat> (a: Word size) : Word size
+Word.s_sqrt size a =
+  if Word.is_neg a then
+    Word.zero
+  else
+    Word.sqrt a

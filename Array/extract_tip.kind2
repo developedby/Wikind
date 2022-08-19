@@ -1,0 +1,3 @@
+Array.extract_tip <a> (arr: Array a Nat.zero) : a
+Array.extract_tip a (Array.tip a_ x) = x
+// Tie case doesn't exist since depth is 0

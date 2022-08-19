@@ -1,0 +1,15 @@
+// the s stands for signed comparison
+Word.s_cmp <size: Nat> (a: Word size) (b: Word size) : Cmp
+Word.s_cmp size a b =
+  let a_neg = Word.is_neg a
+  let b_neg = Word.is_neg b
+  if a_neg then
+    if b_neg then
+      Cmp.inv (Word.cmp a b)
+    else
+      Cmp.ltn
+  else
+    if b_neg then
+      Cmp.gtn
+    else
+      Word.cmp a b

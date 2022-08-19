@@ -1,0 +1,3 @@
+Array.extract_tie <a> <depth: Nat> (arr: Array a (Nat.succ depth)) : Pair (Array a depth) (Array a depth)
+// Since arr has depth at least 1, the tip case doesn't exist
+Array.extract_tie a d (Array.tie a_ d_ lft rgt) = Pair.new lft rgt

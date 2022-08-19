@@ -1,0 +1,6 @@
+// Resize the word, truncating and padding with leading zeros if necessary
+Word.with_size <old_size: Nat> (new_size: Nat) (word: Word old_size) : Word new_size
+Word.with_size old  Nat.zero         word             = Word.e
+Word.with_size old (Nat.succ npred)  Word.e           = Word.o (Word.with_size npred Word.e)
+Word.with_size old (Nat.succ npred) (Word.o s_ wpred) = Word.o (Word.with_size npred wpred)
+Word.with_size old (Nat.succ npred) (Word.i s_ wpred) = Word.i (Word.with_size npred wpred)

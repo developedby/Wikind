@@ -1,0 +1,2 @@
+Word.ltn <size:Nat> (a: Word size) (b: Word size) : Bool
+Word.ltn size a b = Cmp.as_ltn (Word.cmp a b)

@@ -1,0 +1,4 @@
+Bits.to_string (bits: Bits) : String
+Bits.to_string  Bits.e     = String.nil
+Bits.to_string (Bits.o bp) = String.cons 48 (Bits.to_string bp)
+Bits.to_string (Bits.i bp) = String.cons 49 (Bits.to_string bp)

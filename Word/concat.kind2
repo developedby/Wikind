@@ -1,0 +1,5 @@
+// Concatenates two words
+Word.concat <asize: Nat> <bsize: Nat> (a: Word asize) (b: Word bsize) : Word (Nat.add asize bsize)
+Word.concat  Nat.zero     bs  Word.e             b = b
+Word.concat (Nat.succ as) bs (Word.o as_ ap) b = Word.o (Word.concat ap b)
+Word.concat (Nat.succ as) bs (Word.i as_ ap) b = Word.i (Word.concat ap b)

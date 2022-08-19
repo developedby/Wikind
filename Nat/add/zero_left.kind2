@@ -1,0 +1,3 @@
+Nat.add.zero_left (a: Nat) : Equal (Nat.add Nat.zero a) a {
+  Equal.refl
+}

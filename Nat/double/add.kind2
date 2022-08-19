@@ -1,0 +1,28 @@
+Nat.double.add (a: Nat) : Equal (Nat.add a a) (Nat.double a)
+Nat.double.add  Nat.zero       = Equal.refl
+Nat.double.add (Nat.succ pred) =
+  let p1 = Nat.double.add pred
+  let p2 = Equal.apply (x => Nat.succ x) p1
+  let p3 = Nat.add.succ_right pred pred
+  let p4 = Equal.chain p3 p2
+  let p5 = Equal.apply (x => Nat.succ x) p4
+  p5
+
+// Goal: a + a == dbl a
+// Expanding with a = (ap +1)
+// Goal: (ap + (ap +1)) +1 == (dbl ap) +1 +1
+
+// Inductive hypothesis
+// p1: ap + ap == (dbl ap)
+
+// +1 both sides
+// p2: (ap + ap) +1 == (dbl ap) +1
+
+// Aux proposition with add.succ_right
+// p3: (ap + (ap +1)) == (ap + ap) +1
+
+// Chain p3 on p2
+// p4: (ap + (ap +1)) == (dbl ap) +1
+
+// +1 both sides
+// p5: (ap + (ap +1)) +1 == (dbl ap) +1 +1

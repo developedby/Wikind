@@ -1,0 +1,13 @@
+Nat.add.lte (x : Nat) (y : Nat) : Equal (Nat.lte y (Nat.add x y)) Bool.true
+Nat.add.lte  Nat.zero     Nat.zero    = Equal.refl
+Nat.add.lte  Nat.zero    (Nat.succ y) = Equal.rewrite (Nat.lte.reflexivity y) (x => Equal _ x) Equal.refl
+Nat.add.lte (Nat.succ x)  Nat.zero    = Nat.lte.zero_all (Nat.add (Nat.succ x) Nat.zero)
+Nat.add.lte (Nat.succ x) (Nat.succ y) =
+  // (y <= x+y) == true
+  let p0 = Nat.add.lte x y
+  // (y <= (+1 (x+y))) == true
+  let p1 = Nat.lte.succ_right _ _ p0
+  // (+1 (x+y)) == (x + (+1 y))
+  let p2 = Equal.mirror (Nat.add.succ_right x y)
+
+  Equal.rewrite p2 (a => Equal (Nat.lte y a) Bool.true) p1

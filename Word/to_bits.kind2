@@ -1,0 +1,4 @@
+Word.to_bits <size: Nat> (a: Word size) : Bits
+Word.to_bits s  Word.e          = Bits.e
+Word.to_bits s (Word.o s_ pred) = Bits.o (Word.to_bits pred)
+Word.to_bits s (Word.i s_ pred) = Bits.i (Word.to_bits pred)

@@ -1,0 +1,4 @@
+Bits.pop (b: Bits) : Pair (Maybe Bool) Bits
+Bits.pop  Bits.e     = Pair.new  Maybe.none             Bits.e
+Bits.pop (Bits.o bp) = Pair.new (Maybe.some Bool.false) bp
+Bits.pop (Bits.i bp) = Pair.new (Maybe.some Bool.true ) bp

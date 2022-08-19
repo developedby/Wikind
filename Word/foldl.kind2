@@ -1,0 +1,22 @@
+Word.foldl <p: Nat -> Type> <m: Nat>
+  (nil  : (p Nat.zero))
+  (w0   : (n: Nat) -> (p n) -> (p (Nat.succ n)))
+  (w1   : (n: Nat) -> (p n) -> (p (Nat.succ n)))
+  (word : Word m)
+: (p m)
+
+Word.foldl p m nil w0 w1  Word.e          = nil
+
+Word.foldl p m nil w0 w1 (Word.o m_ pred) =
+  let p   = (n => (p (Nat.succ n))) :: Nat -> Type
+  let nil = (w0 Nat.zero nil)
+  let w0  = (x => (w0 (Nat.succ x))) :: (x: Nat) -> ((p (Nat.succ x)) -> (p (Nat.succ (Nat.succ x))))
+  let w1  = x => (w1 (Nat.succ x))
+  Word.foldl p m nil w0 w1 pred
+
+// Word.foldl p m nil w0 w1 (Word.i m_ pred) =
+//   let p   = (n => (p (Nat.succ n))) :: Nat -> Type
+//   let nil = (w1 Nat.zero nil)
+//   let w0  = x => (w0 (Nat.succ x))
+//   let w1  = x => (w1 (Nat.succ x))
+//   Word.foldl p m nil w0 w1 pred

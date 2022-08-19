@@ -1,0 +1,3 @@
+Bool.to_nat (x: Bool) : Nat
+Bool.to_nat Bool.false = Nat.zero
+Bool.to_nat Bool.true  = Nat.succ Nat.zero

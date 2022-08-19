@@ -1,0 +1,8 @@
+// a + (+1 b) = +1 (a + b)
+Nat.add.succ_right (a: Nat) (b: Nat) : Equal (Nat.add a (Nat.succ b)) (Nat.succ (Nat.add a b))
+
+Nat.add.succ_right  Nat.zero         b = Equal.refl
+
+Nat.add.succ_right (Nat.succ a.pred) b =
+  let h = Nat.add.succ_right a.pred b
+  Equal.apply (x => Nat.succ x) h

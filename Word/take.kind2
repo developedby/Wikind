@@ -1,0 +1,5 @@
+Word.take <size: Nat> (n: Nat) (word: Word size) : Word (Nat.min n size)
+Word.take s (Nat.succ npred) (Word.o s_ wpred) = Word.o (Word.take npred wpred)
+Word.take s (Nat.succ npred) (Word.i s_ wpred) = Word.i (Word.take npred wpred)
+Word.take s (Nat.succ npred)  Word.e           = Word.e
+Word.take s  Nat.zero         word             = Word.e

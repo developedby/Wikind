@@ -1,0 +1,2 @@
+// An array is represented as a perfect binary tree of 2^d elements
+Array.tie <a: Type> <d: Nat> (lft: Array a d) (rgt: Array a d) : Array a (Nat.succ d)

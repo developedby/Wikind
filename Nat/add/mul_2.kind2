@@ -1,0 +1,5 @@
+// a + a = 2*a
+Nat.add.mul_2 (a: Nat) : Equal (Nat.add a a) (Nat.mul (Nat.succ (Nat.succ Nat.zero)) a) {
+  // a + a = dbl a = 2*a
+  Equal.chain (Nat.double.add a) (Nat.double.mul a)
+}

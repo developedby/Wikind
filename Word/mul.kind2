@@ -1,0 +1,7 @@
+Word.mul <size: Nat> (a: Word size) (b: Word size) : Word size
+Word.mul size a b = Word.mul.go a b (Word.to_zero a)
+
+Word.mul.go <size: Nat> <b_size: Nat> (a: Word size) (b: Word b_size) (acc: Word b_size) : Word b_size
+Word.mul.go s bs  Word.e          b acc = acc
+Word.mul.go s bs (Word.o s_ pred) b acc = Word.mul.go pred (Word.shift_left b (Nat.succ Nat.zero)             acc)
+Word.mul.go s bs (Word.i s_ pred) b acc = Word.mul.go pred (Word.shift_left b (Nat.succ Nat.zero) (Word.add b acc))

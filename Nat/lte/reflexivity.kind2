@@ -1,0 +1,3 @@
+Nat.lte.reflexivity (n: Nat) : Equal (Nat.lte n n) Bool.true
+Nat.lte.reflexivity  Nat.zero    = Equal.refl
+Nat.lte.reflexivity (Nat.succ n) = Nat.lte.reflexivity n

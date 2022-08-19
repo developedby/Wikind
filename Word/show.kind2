@@ -1,0 +1,2 @@
+Word.show <size: Nat> (word: Word size) : Show
+Word.show s word = Nat.show (Word.to_nat word)

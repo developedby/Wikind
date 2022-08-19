@@ -1,0 +1,23 @@
+Nat.lte.comm_true
+  (a : Nat)
+  (b : Nat)
+  (h : Equal (Nat.lte (Nat.succ a) b) Bool.true)
+: Equal (Nat.lte b a) Bool.false
+
+Nat.lte.comm_true  a            Nat.zero    h = Empty.absurd (Bool.false_not_true h)
+Nat.lte.comm_true  Nat.zero    (Nat.succ b) h = Equal.refl
+Nat.lte.comm_true (Nat.succ a) (Nat.succ b) h = Nat.lte.comm_true a b h
+
+
+  // case b with Hyp {
+  //   zero:
+  //     let contra = Bool.false_neq_true(Hyp)
+  //     Empty.absurd!(contra)
+  //   succ:
+  //     case a with Hyp {
+  //       zero:
+  //         Equal.refl<Bool>(false)
+  //       succ:
+  //         Nat.lte.comm.true(a.pred, b.pred, Hyp)
+  //     }!
+  // }!

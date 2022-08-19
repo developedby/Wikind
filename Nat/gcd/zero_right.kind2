@@ -1,0 +1,3 @@
+Nat.gcd.zero_right (a: Nat) : Equal (Nat.gcd a Nat.zero) a
+Nat.gcd.zero_right  Nat.zero    = Equal.refl
+Nat.gcd.zero_right (Nat.succ a) = Equal.refl

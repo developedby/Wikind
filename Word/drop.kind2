@@ -1,0 +1,5 @@
+// Removes the first n bits of a word
+Word.drop <size: Nat> (n: Nat) (word: Word (Nat.add n size)) : Word size
+// No Word.e case since word has size at least n
+Word.drop s  Nat.zero      w             = w
+Word.drop s (Nat.succ np) (Word.o s_ wp) = Word.drop np wp

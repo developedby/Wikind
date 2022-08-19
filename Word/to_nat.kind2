@@ -1,0 +1,4 @@
+Word.to_nat <size: Nat> (word: Word size) : Nat
+Word.to_nat s  Word.e          = Nat.zero
+Word.to_nat s (Word.o s_ pred) =           Nat.double (Word.to_nat pred)
+Word.to_nat s (Word.i s_ pred) = Nat.succ (Nat.double (Word.to_nat pred))

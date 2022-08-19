@@ -1,0 +1,10 @@
+// (x <= y) => (x <= (+1 y))
+Nat.lte.succ_right
+  (x : Nat)
+  (y : Nat)
+  (h : Equal (Nat.lte x y) Bool.true)
+: Equal (Nat.lte x (Nat.succ y)) Bool.true
+
+Nat.lte.succ_right  Nat.zero     y           h = Equal.refl
+Nat.lte.succ_right (Nat.succ x)  Nat.zero    h = Empty.absurd (Bool.false_not_true h)
+Nat.lte.succ_right (Nat.succ x) (Nat.succ y) h = Nat.lte.succ_right x y h

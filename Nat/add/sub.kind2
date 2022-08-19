@@ -1,0 +1,5 @@
+// a + b - a = b
+Nat.add.sub (a: Nat) (b: Nat) : Equal (Nat.sub (Nat.add a b) a) b
+Nat.add.sub  Nat.zero     Nat.zero    = Equal.refl
+Nat.add.sub  Nat.zero    (Nat.succ b) = Equal.refl
+Nat.add.sub (Nat.succ a)  b           = Nat.add.sub a b

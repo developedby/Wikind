@@ -1,0 +1,4 @@
+Word.trailing_ones <size: Nat> (word: Word size) : Nat
+Word.trailing_ones s  Word.e          = Nat.zero
+Word.trailing_ones s (Word.o s_ pred) = Nat.zero
+Word.trailing_ones s (Word.i s_ pred) = Nat.succ (Word.trailing_ones pred)

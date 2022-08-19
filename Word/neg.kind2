@@ -1,0 +1,12 @@
+// 2's complement of the word
+Word.neg <size: Nat> (word: Word size) : Word size
+Word.neg s  Word.e          = Word.e
+Word.neg s (Word.o s_ pred) = Word.o (Word.neg.aux pred Bool.true)
+Word.neg s (Word.i s_ pred) = Word.i (Word.neg.aux pred Bool.false)
+
+Word.neg.aux <size: Nat> (word: Word size) (inc: Bool) : Word size
+Word.neg.aux s  Word.e          inc        = Word.e
+Word.neg.aux s (Word.o s_ pred) Bool.false = Word.i (Word.neg.aux pred Bool.false)
+Word.neg.aux s (Word.o s_ pred) Bool.true  = Word.o (Word.neg.aux pred Bool.true)
+Word.neg.aux s (Word.i s_ pred) Bool.false = Word.o (Word.neg.aux pred Bool.false)
+Word.neg.aux s (Word.i s_ pred) Bool.true  = Word.i (Word.neg.aux pred Bool.false)

@@ -1,0 +1,5 @@
+Word.from_bits (size: Nat) (bits: Bits) : Word size
+Word.from_bits  Nat.zero         bits            = Word.e
+Word.from_bits (Nat.succ npred)  Bits.e          = Word.o (Word.from_bits npred Bits.e)
+Word.from_bits (Nat.succ npred) (Bits.o s bpred) = Word.o (Word.from_bits npred bpred)
+Word.from_bits (Nat.succ npred) (Bits.i s bpred) = Word.i (Word.from_bits npred bpred)

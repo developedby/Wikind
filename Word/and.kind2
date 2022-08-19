@@ -1,0 +1,9 @@
+// Returns the bitwise And of two words
+Word.and <size: Nat> (a: Word size) (b: Word size) : Word size
+
+Word.and s Word.e Word.e = Word.e
+
+Word.and (Nat.succ sp) (Word.o as ap) (Word.o bs bp) = Word.o (Word.and ap bp) // 0 & 0 = 0
+Word.and (Nat.succ sp) (Word.o as ap) (Word.i bs bp) = Word.o (Word.and ap bp) // 0 & 1 = 0
+Word.and (Nat.succ sp) (Word.i as ap) (Word.o bs bp) = Word.o (Word.and ap bp) // 1 & 0 = 0
+Word.and (Nat.succ sp) (Word.i as ap) (Word.i bs bp) = Word.i (Word.and ap bp) // 1 & 1 = 1

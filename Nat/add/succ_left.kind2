@@ -1,0 +1,3 @@
+Nat.add.succ_left (a: Nat) (b: Nat) : Equal (Nat.add (Nat.succ a) b) (Nat.succ (Nat.add a b)) {
+  Equal.refl
+}

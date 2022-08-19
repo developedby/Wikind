@@ -1,0 +1,4 @@
+// Creates an array storing 2^d times the element x
+Array.alloc <a> (depth: Nat) (x: a): Array a depth
+Array.alloc a Nat.zero        x = Array.tip x
+Array.alloc a (Nat.succ pred) x = Array.tie (Array.alloc pred x) (Array.alloc pred x)

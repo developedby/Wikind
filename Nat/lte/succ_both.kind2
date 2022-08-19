@@ -1,0 +1,12 @@
+// (x <= y) => (+1 x <= +1 y)
+Nat.lte.succ_both
+  (x : Nat)
+  (y : Nat)
+  (h : Equal (Nat.lte x y) Bool.true)
+: Equal (Nat.lte (Nat.succ x) (Nat.succ y)) Bool.true
+
+Nat.lte.succ_both  Nat.zero    (Nat.succ y) h = Equal.refl
+Nat.lte.succ_both (Nat.succ x) (Nat.succ y) h = Nat.lte.succ_both x y h
+Nat.lte.succ_both  x            Nat.zero    h =
+  let h1 = Equal.mirror (Nat.lte.zero_right x h)
+  Equal.rewrite h1 (x => Equal (Nat.lte x Nat.zero) Bool.true) Equal.refl

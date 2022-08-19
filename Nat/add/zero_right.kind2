@@ -1,0 +1,5 @@
+Nat.add.zero_right (a: Nat) : Equal (Nat.add a Nat.zero) a
+Nat.add.zero_right  Nat.zero = Equal.refl
+Nat.add.zero_right (Nat.succ pred) =
+  let h = Nat.add.zero_right pred
+  Equal.apply (x => Nat.succ x) h

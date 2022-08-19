@@ -1,0 +1,4 @@
+Word.is_zero <size: Nat> (word: Word size) : Bool
+Word.is_zero s  Word.e          = Bool.true
+Word.is_zero s (Word.o s_ pred) = Word.is_zero pred
+Word.is_zero s (Word.i s_ pred) = Bool.false

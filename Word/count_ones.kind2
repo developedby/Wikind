@@ -1,0 +1,5 @@
+// Return the number of 1 bits in the word
+Word.count_ones <size: Nat> (word: Word size) : Nat
+Word.count_ones s  Word.e          = Nat.zero
+Word.count_ones s (Word.o s_ pred) =            Word.count_ones pred
+Word.count_ones s (Word.i s_ pred) = (Nat.succ (Word.count_ones pred))

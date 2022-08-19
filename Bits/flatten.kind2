@@ -1,0 +1,3 @@
+Bits.flatten (list: List Bits) : Bits
+Bits.flatten (List.nil  Bits)      = Bits.e
+Bits.flatten (List.cons Bits x xs) = Bits.concat x (Bits.flatten xs)

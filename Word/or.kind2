@@ -1,0 +1,6 @@
+Word.or <size: Nat> (a: Word size) (b: Word size) : Word size
+Word.or  s             Word.e         Word.e        = Word.e
+Word.or (Nat.succ sp) (Word.o as ap) (Word.o bs bp) = Word.o (Word.or ap bp)
+Word.or (Nat.succ sp) (Word.o as ap) (Word.i bs bp) = Word.i (Word.or ap bp)
+Word.or (Nat.succ sp) (Word.i as ap) (Word.o bs bp) = Word.i (Word.or ap bp)
+Word.or (Nat.succ sp) (Word.i as ap) (Word.i bs bp) = Word.i (Word.or ap bp)

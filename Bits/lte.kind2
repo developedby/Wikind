@@ -1,0 +1,3 @@
+Bits.lte (a: Bits) (b: Bits) : Bool {
+  Cmp.as_lte (Bits.cmp a b)
+}

@@ -1,0 +1,14 @@
+Bits.cmp (a: Bits) (b: Bits) : Cmp {
+  Bits.cmp.go a b Cmp.eql
+}
+
+Bits.cmp.go (a: Bits) (b: Bits) (c: Cmp) : Cmp
+Bits.cmp.go  Bits.e      Bits.e     c = c
+Bits.cmp.go  Bits.e     (Bits.o bp) c = Bits.cmp.go Bits.e bp c
+Bits.cmp.go  Bits.e      b          c = Cmp.ltn
+Bits.cmp.go (Bits.o ap)  Bits.e     c = Bits.cmp.go ap Bits.e c
+Bits.cmp.go (Bits.o ap) (Bits.o bp) c = Bits.cmp.go ap bp c
+Bits.cmp.go (Bits.o ap) (Bits.i bp) c = Bits.cmp.go ap bp Cmp.ltn
+Bits.cmp.go (Bits.i ap)  Bits.e     c = Cmp.gtn
+Bits.cmp.go (Bits.i ap) (Bits.o bp) c = Bits.cmp.go ap bp Cmp.gtn
+Bits.cmp.go (Bits.i ap) (Bits.i bp) c = Bits.cmp.go ap bp c

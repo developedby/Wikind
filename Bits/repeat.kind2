@@ -1,0 +1,11 @@
+Bits.repeat (len: Nat) (bit: Bool) : Bits
+Bits.repeat len Bool.false = Bits.repeat.o len
+Bits.repeat len Bool.true  = Bits.repeat.i len
+
+Bits.repeat.o (len: Nat) : Bits
+Bits.repeat.o  Nat.zero     = Bits.e
+Bits.repeat.o (Nat.succ lp) = Bits.o (Bits.repeat.o lp)
+
+Bits.repeat.i (len: Nat) : Bits
+Bits.repeat.i  Nat.zero     = Bits.e
+Bits.repeat.i (Nat.succ lp) = Bits.i (Bits.repeat.i lp)

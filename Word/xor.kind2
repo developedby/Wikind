@@ -1,0 +1,6 @@
+Word.xor <size: Nat> (a: Word size) (b: Word size) : Word size
+Word.xor s Word.e Word.e = Word.e
+Word.xor s (Word.o a.s a.pred) (Word.o b.s b.pred) = Word.o (Word.xor a.pred b.pred)
+Word.xor s (Word.o a.s a.pred) (Word.i b.s b.pred) = Word.i (Word.xor a.pred b.pred)
+Word.xor s (Word.i a.s a.pred) (Word.o b.s b.pred) = Word.i (Word.xor a.pred b.pred)
+Word.xor s (Word.i a.s a.pred) (Word.i b.s b.pred) = Word.o (Word.xor a.pred b.pred)

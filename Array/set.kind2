@@ -1,0 +1,2 @@
+Array.set <a> <depth: Nat> (idx: Word depth) (val: a) (arr: Array a depth) : Array a depth
+Array.set a d idx val arr = Array.mut a d idx (x => val) arr

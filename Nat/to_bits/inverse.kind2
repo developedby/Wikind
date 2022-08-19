@@ -1,0 +1,18 @@
+Nat.to_bits.inverse (n: Nat) : Equal n (Bits.to_nat (Nat.to_bits n))
+Nat.to_bits.inverse  Nat.zero     = Equal.refl
+Nat.to_bits.inverse (Nat.succ np) =
+  // p0:                          np == (to_nat (to_bits np))
+  // p1:                     (+1 np) == (+1 (to_nat (to_bits np)))
+  // p2: (+1 (to_nat (to_bits np)))) == (to_nat (inc (to_bits np)))
+  // p3:                     (+1 np) == (to_nat (inc (to_bits np)))
+  // p4:          (inc (to_bits np)) == (to_bits (+1 np))
+  // p5: (to_nat (inc (to_bits np))) == (to_nat (to_bits (+1 np)))
+  // p6:                     (+1 np) == (to_nat (to_bits (+1 np)))
+  let p0 = Nat.to_bits.inverse np
+  let p1 = Equal.apply (x => Nat.succ x) p0
+  let p2 = Equal.mirror (Bits.to_nat.inc_is_succ (Nat.to_bits np))
+  let p3 = Equal.chain p1 p2 
+  let p4 = Equal.mirror (Nat.to_bits.succ_is_inc np)
+  let p5 = Equal.apply (x => Bits.to_nat x) p4
+  let p6 = Equal.chain p3 p5
+  p6

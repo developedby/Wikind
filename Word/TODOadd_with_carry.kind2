@@ -1,0 +1,54 @@
+// Adds two words plus a carry
+Word.add_with_carry <size: Nat> (a: Word size) (b: Word size) : Pair (Word size) Bool
+Word.add_with_carry s a b = (Word.add_with_carry.go a b (Pair.new Word.e Bool.false)) :: Pair (Word s) Bool 
+
+
+Word.add_with_carry.go <s_left: Nat> <s_done: Nat>
+  (a   : Word s_left)
+  (b   : Word s_left)
+  (acc : Pair (Word s_done) Bool)
+: Pair (Word (Nat.add s_done s_left)) Bool
+
+// The only Word.e case since a and b have same size
+Word.add_with_carry.go sl Nat.zero Word.e Word.e acc = acc
+
+// Break into 2 subfunctions to avoid arity problems with the HVM
+Word.add_with_carry.go sl sd a b (Pair.new t1 t2 acc Bool.false) = Word.add_with_carry.go.false a b acc
+Word.add_with_carry.go sl sd a b (Pair.new t1 t2 acc Bool.true ) = Word.add_with_carry.go.true  a b acc
+
+
+Word.add_with_carry.go.false <s_left: Nat> <s_done: Nat>
+  (a   : Word s_left)
+  (b   : Word s_left)
+  (acc : Word s_done)
+: Pair (Word (Nat.add s_done s_left)) Bool
+Word.add_with_carry.go.false (Nat.succ sl.pred) sd (Word.o a.s a.pred) (Word.o b.s b.pred) acc =
+  let a.pred = a.pred :: Word sl.pred
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.o acc) Bool.false)
+
+Word.add_with_carry.go.false sl sd (Word.o a.s a.pred) (Word.i b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.i acc) Bool.false)
+
+Word.add_with_carry.go.false sl sd (Word.i a.s a.pred) (Word.o b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.i acc) Bool.false)
+
+Word.add_with_carry.go.false sl sd (Word.i a.s a.pred) (Word.i b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.o acc) Bool.true )
+
+
+Word.add_with_carry.go.true <s_left: Nat> <s_done: Nat>
+  (a   : Word s_left)
+  (b   : Word s_left)
+  (acc : Word s_done)
+: Pair (Word (Nat.add s_done s_left)) Bool
+Word.add_with_carry.go.true sl sd (Word.o a.s a.pred) (Word.o b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.i acc) Bool.false)
+
+Word.add_with_carry.go.true sl sd (Word.o a.s a.pred) (Word.i b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.o acc) Bool.true )
+
+Word.add_with_carry.go.true sl sd (Word.i a.s a.pred) (Word.o b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.o acc) Bool.true)
+
+Word.add_with_carry.go.true sl sd (Word.i a.s a.pred) (Word.i b.s b.pred) acc =
+  Word.add_with_carry.go a.pred b.pred (Pair.new (Word.i acc) Bool.true )

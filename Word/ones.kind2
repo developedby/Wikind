@@ -1,0 +1,3 @@
+Word.ones +<size: Nat> : Word size
+Word.ones (Nat.succ pred) = Word.i (Word.ones pred)
+Word.ones  Nat.zero       = Word.e

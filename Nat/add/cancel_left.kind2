@@ -1,0 +1,6 @@
+// (a+x = a+x) => (x = y)
+Nat.add.cancel_left (a: Nat) (x: Nat) (y: Nat) (e0 : Equal (Nat.add a x) (Nat.add a y)) : Equal x y
+Nat.add.cancel_left  Nat.zero     x y e0 = e0
+Nat.add.cancel_left (Nat.succ ap) x y e0 =
+  let e1 = Equal.apply (x => Nat.pred x) e0
+  Nat.add.cancel_left ap x y e1

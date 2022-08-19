@@ -1,0 +1,3 @@
+Nat.lte.zero_all (y : Nat) : Equal (Nat.lte Nat.zero y) Bool.true
+Nat.lte.zero_all  Nat.zero    = Equal.refl
+Nat.lte.zero_all (Nat.succ n) = Equal.refl

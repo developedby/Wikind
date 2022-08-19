@@ -1,0 +1,4 @@
+Word.pred <size: Nat> (word: Word (Nat.succ size)) : Word size
+// No Word.e case since the word has size at least 1
+Word.pred (Nat.succ sp) (Word.o s w) = w
+Word.pred (Nat.succ sp) (Word.i s w) = w

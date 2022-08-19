@@ -1,0 +1,4 @@
+Word.s_show <size: Nat> (a: Word size) : Show
+Word.s_show size a =
+  let sgn = if Word.is_neg a then "-" else ""
+  x => String.concat sgn ((Word.show a) x)

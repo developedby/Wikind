@@ -1,0 +1,4 @@
+Bits.to_u60 (b: Bits) : U60
+Bits.to_u60  Bits.e     = 0
+Bits.to_u60 (Bits.o bp) =    (<< (Bits.to_u60 bp) 1)
+Bits.to_u60 (Bits.o bp) = (+ (<< (Bits.to_u60 bp) 1) 1)

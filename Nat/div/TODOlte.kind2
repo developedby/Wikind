@@ -1,0 +1,5 @@
+Nat.div.lte
+  (a : Nat)
+  (b : Nat)
+  (h : Equal (Nat.lte a b) Bool.true)
+: Equal (Nat.div a b) Nat.zero

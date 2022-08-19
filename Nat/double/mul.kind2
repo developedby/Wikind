@@ -1,0 +1,19 @@
+Nat.double.mul (a: Nat) : Equal (Nat.double a) (Nat.mul (Nat.succ (Nat.succ Nat.zero)) a)
+Nat.double.mul Nat.zero = Equal.refl
+Nat.double.mul (Nat.succ pred) =
+  let p1 = Equal.mirror (Nat.double.add pred)
+  let p2 = Equal.apply (x => Nat.succ x) p1
+  let p3 = Equal.mirror (Nat.add.succ_right pred pred)
+  let p4 = Equal.chain p2 p3
+  let p5 = Equal.apply (x => Nat.succ x) p4
+  p5
+
+// Goal
+// dbl a == (* 2 a)
+// +1 +1 dbl pred = +1 (pred + (+1 pred))
+
+// p1: dbl pred = pred + pred
+// p2: +1 dbl pred = +1 (pred + pred)
+// p3: +1 (pred + pred) = pred + (+1 pred)
+// p4: +1 dbl pred = pred + (+1 pred)
+// p5: +1 +1 dbl pred = +1 (pred + (+1 pred))

@@ -1,0 +1,14 @@
+Bits.sub (a: Bits) (b: Bits) : Bits {
+  Bits.reverse (Bits.sub.go a b Bits.e)
+}
+
+Bits.sub.go (a: Bits) (b: Bits) (bits: Bits) : Bits
+Bits.sub.go  Bits.e      Bits.e     bits = bits
+Bits.sub.go  Bits.e     (Bits.o bp) bits = Bits.sub.go Bits.e bp           (Bits.i bits)
+Bits.sub.go  Bits.e     (Bits.i bp) bits = Bits.e
+Bits.sub.go (Bits.o ap)  Bits.e     bits = Bits.sub.go ap     Bits.e       (Bits.o bits)
+Bits.sub.go (Bits.o ap) (Bits.o bp) bits = Bits.sub.go ap     bp           (Bits.o bits)
+Bits.sub.go (Bits.o ap) (Bits.i bp) bits = Bits.sub.go ap    (Bits.inc bp) (Bits.i bits)
+Bits.sub.go (Bits.i ap)  Bits.e     bits = Bits.sub.go ap     Bits.e       (Bits.i bits)
+Bits.sub.go (Bits.i ap) (Bits.o bp) bits = Bits.sub.go ap     bp           (Bits.i bits)
+Bits.sub.go (Bits.i ap) (Bits.i bp) bits = Bits.sub.go ap     bp           (Bits.o bits)

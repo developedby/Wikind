@@ -1,0 +1,2 @@
+Word.shl <size: Nat> (val: Word size) (n: Word size) : Word size
+Word.shl s val n = Word.shift_left val (Word.to_nat n)

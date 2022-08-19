@@ -1,0 +1,14 @@
+// (x+a = y+a) => (x = y)
+Nat.add.cancel_right (a: Nat) (x: Nat) (y: Nat) (e0: Equal Nat (Nat.add x a) (Nat.add y a)) : Equal x y {
+  // a+x = x+a
+  let p0 = Nat.add.comm a x
+  // a+x = x+a = y+a
+  let p1 = Equal.chain p0 e0
+  // y+a = a+y
+  let p2 = Nat.add.comm y a
+  // a+x = y+a = a+y
+  let p3 = Equal.chain p1 p2
+  // (a+x = a+y) => (x = y)
+  let p4 = Nat.add.cancel_left a x y p3
+  p4
+}

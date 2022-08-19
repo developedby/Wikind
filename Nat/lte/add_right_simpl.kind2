@@ -1,0 +1,13 @@
+// ((a+b) <= (c+b)) => (a <= c)
+Nat.lte.add_right_simpl
+  (a : Nat)
+  (b : Nat)
+  (c : Nat)
+  (h : Equal (Nat.lte (Nat.add a b) (Nat.add c b)) Bool.true)
+: Equal (Nat.lte a c) Bool.true {
+  let h1 = Nat.lte.sub_both (Nat.add a b) (Nat.add c b) b h
+  let h2 = Equal.rewrite (Nat.add.sub a b) (x => Equal (Nat.lte x (Nat.sub (Nat.add c b) b)) Bool.true) h1
+  // let h3 = Equal.rewrite (Nat.add.sub c b) (x => Equal (Nat.lte a x) Bool.true) h2
+  // h3
+  ?
+}

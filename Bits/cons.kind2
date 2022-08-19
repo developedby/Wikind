@@ -1,0 +1,4 @@
+// Insert lsb
+Bits.cons (x: Bool) (xs: Bits) : Bits
+Bits.cons Bool.false xs = Bits.o xs
+Bits.cons Bool.true  xs = Bits.i xs

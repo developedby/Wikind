@@ -1,0 +1,4 @@
+Bool.false_not_true (e: (Equal Bool Bool.false Bool.true)) : Empty {
+  let p = Equal.apply (x => Bool.not x) e
+  Bool.true_not_false p
+}

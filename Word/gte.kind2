@@ -1,0 +1,2 @@
+Word.gte <size: Nat> (a: Word size) (b: Word size) : Bool
+Word.gte s a b = Cmp.as_gte (Word.cmp a b)

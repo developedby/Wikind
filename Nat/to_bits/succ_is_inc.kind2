@@ -1,0 +1,3 @@
+Nat.to_bits.succ_is_inc (n: Nat) : Equal (Nat.to_bits (Nat.succ n)) (Bits.inc (Nat.to_bits n))
+Nat.to_bits.succ_is_inc  Nat.zero     = Equal.refl
+Nat.to_bits.succ_is_inc (Nat.succ np) = Equal.apply (x => Bits.inc x) (Nat.to_bits.succ_is_inc np)

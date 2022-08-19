@@ -1,0 +1,6 @@
+Word.reverse <size: Nat> (word: Word size) : Word size
+Word.reverse size word =
+  let nil = Word.e
+  let w0  = size => rev => Word.o rev
+  let w1  = size => rev => Word.i rev
+  Word.foldl nil w0 w1 word

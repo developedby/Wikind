@@ -1,0 +1,15 @@
+Nat.lte.sub_both
+  (a : Nat)
+  (b : Nat)
+  (c : Nat)
+  (h : Equal (Nat.lte a b) Bool.true)
+: Equal (Nat.lte (Nat.sub a c) (Nat.sub b c)) Bool.true
+
+Nat.lte.sub_both  Nat.zero     Nat.zero     Nat.zero    h = h
+Nat.lte.sub_both (Nat.succ a)  Nat.zero     Nat.zero    h = h
+Nat.lte.sub_both  Nat.zero    (Nat.succ b)  Nat.zero    h = h
+Nat.lte.sub_both (Nat.succ a) (Nat.succ b)  Nat.zero    h = h
+Nat.lte.sub_both  Nat.zero     Nat.zero    (Nat.succ c) h = Equal.refl
+Nat.lte.sub_both  Nat.zero    (Nat.succ b) (Nat.succ c) h = Nat.lte.zero_all (Nat.sub b c)
+Nat.lte.sub_both (Nat.succ a)  Nat.zero    (Nat.succ c) h = Empty.absurd (Bool.false_not_true h)
+Nat.lte.sub_both (Nat.succ a) (Nat.succ b) (Nat.succ c) h = Nat.lte.sub_both a b c h

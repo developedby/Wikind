@@ -1,0 +1,10 @@
+Word.fold <p: Nat -> Type> <m: Nat>
+  (nil  : (p Nat.zero))
+  (w0   : <n: Nat> -> (p n) -> (p (Nat.succ n)))
+  (w1   : <n: Nat> -> (p n) -> (p (Nat.succ n)))
+  (word : Word m)
+: (p m)
+
+Word.fold p m nil w0 w1  Word.e          = nil
+Word.fold p m nil w0 w1 (Word.o m_ pred) = (w0 (Word.fold nil w0 w1 pred))
+Word.fold p m nil w0 w1 (Word.i m_ pred) = (w1 (Word.fold nil w0 w1 pred))

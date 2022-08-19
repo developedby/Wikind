@@ -1,0 +1,5 @@
+// Invert each bit of the word
+Word.not <size: Nat> (word: Word size) : Word size
+Word.not s  Word.e          = Word.e
+Word.not s (Word.o s_ pred) = Word.i (Word.not pred)
+Word.not s (Word.i s_ pred) = Word.o (Word.not pred)

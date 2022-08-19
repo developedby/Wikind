@@ -1,0 +1,16 @@
+Nat.add.swap
+  (a : Nat)
+  (b : Nat)
+  (c : Nat)
+: Equal (Nat.add a (Nat.add b c)) (Nat.add b (Nat.add a c)) {
+  // b+c = c+b
+  let p0 = Nat.add.comm b c
+  // a+(b+c) = a+(c+b)
+  let p1 = Equal.apply (x => Nat.add a x) p0
+  // a+(c+b) = (a+c)+b
+  let p2 = Nat.add.assoc a c b
+  // (a+c)+b = b+(a+c)
+  let p3 = Nat.add.comm (Nat.add a c) b
+  // a+(b+c) = (a+c)+b = b+(a+c)
+  Equal.chain (Equal.chain p1 p2) p3
+}

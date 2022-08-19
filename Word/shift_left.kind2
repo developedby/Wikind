@@ -1,0 +1,15 @@
+Word.shift_left <size: Nat> (val: Word size) (n: Nat) : Word size
+Word.shift_left size val  Nat.zero       = val
+Word.shift_left size val (Nat.succ pred) = Word.shift_left (Word.shift_left.one val) pred
+
+Word.shift_left.one <size: Nat> (word: Word size) : Word size
+Word.shift_left.one s  Word.e          = Word.e
+Word.shift_left.one s (Word.o s_ pred) = Word.o (Word.shift_left.one.go pred Bool.false)
+Word.shift_left.one s (Word.i s_ pred) = Word.o (Word.shift_left.one.go pred Bool.true)
+
+Word.shift_left.one.go <size: Nat> (word: Word size) (prev: Bool) : Word size
+Word.shift_left.one.go s  Word.e          prev       = Word.e
+Word.shift_left.one.go s (Word.o s_ pred) Bool.false = Word.o (Word.shift_left.one.go pred Bool.false)
+Word.shift_left.one.go s (Word.o s_ pred) Bool.true  = Word.i (Word.shift_left.one.go pred Bool.false)
+Word.shift_left.one.go s (Word.i s_ pred) Bool.false = Word.o (Word.shift_left.one.go pred Bool.true)
+Word.shift_left.one.go s (Word.i s_ pred) Bool.true  = Word.i (Word.shift_left.one.go pred Bool.true)

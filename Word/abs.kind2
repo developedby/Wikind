@@ -1,0 +1,8 @@
+// Returns the absolute value of a word in 2's complement
+Word.abs <size: Nat> (w: Word size) : Word size {
+  if (Word.is_neg w) {
+    (Word.neg w)
+  } else {
+    w
+  }
+}

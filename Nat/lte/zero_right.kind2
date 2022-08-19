@@ -1,0 +1,4 @@
+Nat.lte.zero_right (n: Nat) (h: Equal (Nat.lte n Nat.zero) Bool.true) : Equal n Nat.zero
+
+Nat.lte.zero_right  Nat.zero    h = Equal.refl
+Nat.lte.zero_right (Nat.succ n) h = Empty.absurd (Bool.false_not_true h)

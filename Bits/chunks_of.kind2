@@ -1,0 +1,14 @@
+Bits.chunks_of (len: Nat) (bits: Bits) : List Bits {
+  Bits.chunks_of.go len bits len Bits.e
+}
+
+Bits.chunks_of.go
+  (len   : Nat ) // length of each chunk
+  (bits  : Bits) // bits to be split
+  (need  : Nat ) // number of vals to complete chunk
+  (chunk : Bits) // current chunk
+: List Bits
+Bits.chunks_of.go len  Bits.e      need         chunk = List.cons (Bits.reverse chunk) List.nil
+Bits.chunks_of.go len  bits        Nat.zero     chunk = List.cons (Bits.reverse chunk) (Bits.chunks_of.go len bits len Bits.e)
+Bits.chunks_of.go len (Bits.o bp) (Nat.succ np) chunk = Bits.chunks_of.go len bp np (Bits.o chunk)
+Bits.chunks_of.go len (Bits.i bp) (Nat.succ np) chunk = Bits.chunks_of.go len bp np (Bits.i chunk)

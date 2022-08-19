@@ -1,0 +1,7 @@
+Word.is_neg <size: Nat> (word: Word size) : Bool
+Word.is_neg size word = Word.is_neg.go word Bool.false
+
+Word.is_neg.go <size: Nat> (word: Word size) (n: Bool) : Bool
+Word.is_neg.go s  Word.e          n = n
+Word.is_neg.go s (Word.o s_ pred) n = Word.is_neg.go pred Bool.false
+Word.is_neg.go s (Word.i s_ pred) n = Word.is_neg.go pred Bool.true

@@ -1,0 +1,23 @@
+Word.sqrt <size: Nat> (word: Word size) : Word size
+Word.sqrt size word =
+  let w_1 = Word.inc (Word.to_zero word)
+  let siz = Word.size word
+  let n_1 = Nat.succ Nat.zero
+  let n_2 = Nat.succ (Nat.succ Nat.zero)
+  let sub = if Nat.is_even s then n_2 else n_1
+  let bit = Word.shift_left w_1 (Nat.sub siz sub)
+  let shf = (Function.while bit (b => Word.gtn b word) (b => Word.shift_right b n_2))
+  Word.sqrt.go word shf (Word.to_zero word)
+
+Word.sqrt.go <size: Nat> (word: Word size) (bit: Word size) (res: Word size) : Word size
+Word.sqrt.go s word bit res =
+  if Bool.not (Word.is_zero bit) then
+    let sum  = Word.add res bit
+    let gte  = Word.gte word sum
+    let n1   = Nat.succ Nat.zero
+    let word = if gte then (Word.sub word sum) else word
+    let res  = if gte then (Word.add (Word.shift_right res n1) bit) else (Word.shift_right res n1)
+    let n2   = Nat.succ (Nat.succ Nat.zero)
+    Word.sqrt.go word (Word.shift_right bit n2) res
+  else
+    res

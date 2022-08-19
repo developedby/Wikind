@@ -1,0 +1,24 @@
+Bits.div (a: Bits) (b: Bits) : Bits {
+  let as = Bits.size a
+  let bs = Bits.size b
+  if Nat.ltn as bs {
+    Bits.o Bits.e
+  } else {
+    let shf1 = Nat.sub as bs
+    let shf2 = Bits.shift_left shf1 b
+    Bits.div.go shf1 a shf2 Bits.e
+  }
+}
+
+Bits.div.go (shf1: Nat) (sub: Bits) (shf2: Bits) (val: Bits) : Bits {
+  let bit_on = Bits.gte sub shf2
+  let new_val = if bit_on { Bits.i val } else { Bits.o val }
+
+  if Nat.is_succ shf1 {
+    let new_shf2 = Bits.shift_right Nat.one shf2
+    let new_sub = if bit_on { Bits.sub sub shf2 } else { sub }
+    Bits.div.go (Nat.pred shf1) new_sub new_shf2 new_val
+  } else {
+    new_val
+  }
+}

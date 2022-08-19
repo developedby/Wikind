@@ -1,0 +1,9 @@
+Nat.gte.anticommutative
+  (x : Nat)
+  (y : Nat)
+  (h : Equal (Nat.gte x y) Bool.false) : Equal (Nat.gte y x) Bool.true
+
+Nat.gte.anticommutative  Nat.zero     Nat.zero    h = Equal.refl
+Nat.gte.anticommutative  Nat.zero    (Nat.succ y) h = Equal.refl
+Nat.gte.anticommutative (Nat.succ x)  Nat.zero    h = Empty.absurd (Bool.false_not_true (Equal.mirror h))
+Nat.gte.anticommutative (Nat.succ x) (Nat.succ y) h = Nat.gte.anticommutative x y h
