@@ -1,0 +1,3 @@
+Bits.shift_right (n: Nat) (val: Bits) : Bits
+Bits.shift_right  Nat.zero     val = val
+Bits.shift_right (Nat.succ np) val = Bits.shift_right np (Bits.tail val)

@@ -1,0 +1,14 @@
+// Insert msb
+Bits.snoc (x: Bool) (xs: Bits) : Bits
+Bits.snoc Bool.false xs = Bits.snoc.o xs
+Bits.snoc Bool.true  xs = Bits.snoc.i xs
+
+Bits.snoc.o (xs: Bits) : Bits
+Bits.snoc.o  Bits.e     = Bits.o  Bits.e
+Bits.snoc.o (Bits.o xs) = Bits.o (Bits.snoc.o xs)
+Bits.snoc.o (Bits.i xs) = Bits.i (Bits.snoc.o xs)
+
+Bits.snoc.i (xs: Bits) : Bits
+Bits.snoc.i  Bits.e     = Bits.i  Bits.e
+Bits.snoc.i (Bits.o xs) = Bits.o (Bits.snoc.i xs)
+Bits.snoc.i (Bits.i xs) = Bits.i (Bits.snoc.i xs)

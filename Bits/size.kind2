@@ -1,6 +1,10 @@
-// Given a bit structure, return its size
-// Example: (Bits.size (Bits.i (Bits.i Bits.e))) -> 2
-Bits.size (b: Bits) : Nat
-Bits.size (Bits.e)        = (Nat.zero)
-Bits.size (Bits.o b.pred) = (Nat.succ (Bits.size b.pred))
-Bits.size (Bits.i b.pred) = (Nat.succ (Bits.size b.pred))
+// Returns the length of the bits without leading 0s
+// Example: (Bits.size (Bits.i (Bits.o Bits.e))) -> 1
+Bits.size(bits: Bits): Nat {
+  Bits.size.go bits Nat.zero Nat.zero
+}
+
+Bits.size.go (bits: Bits) (c: Nat) (n: Nat) : Nat
+Bits.size.go  Bits.e    c n = n
+Bits.size.go (Bits.o b) c n = Bits.size.go b (Nat.succ c) n
+Bits.size.go (Bits.i b) c n = Bits.size.go b (Nat.succ c) (Nat.succ c)

@@ -1,0 +1,3 @@
+Bits.zeros (n: Nat) : Bits
+Bits.zeros  Nat.zero    = Bits.e
+Bits.zeros (Nat.succ n) = Bits.o (Bits.zero n)

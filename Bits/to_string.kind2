@@ -1,6 +1,4 @@
-// Transforms a Bit structure to a String
-// Example: (Bits.to_string (Bits.i (Bits.o Bits.e))) -> "10"
-Bits.to_string (b : Bits) : String
-Bits.to_string  Bits.e         = String.nil
-Bits.to_string (Bits.o b.pred) = String.concat "0" (Bits.to_string b.pred)
-Bits.to_string (Bits.i b.pred) = String.concat "1" (Bits.to_string b.pred)
+Bits.to_string (bits: Bits) : String
+Bits.to_string  Bits.e     = String.nil
+Bits.to_string (Bits.o bp) = String.cons 48 (Bits.to_string bp)
+Bits.to_string (Bits.i bp) = String.cons 49 (Bits.to_string bp)

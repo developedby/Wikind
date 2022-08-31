@@ -1,0 +1,8 @@
+Bits.mul (a: Bits) (b: Bits) : Bits {
+  Bits.mul.go a b Bits.e
+}
+
+Bits.mul.go (a: Bits) (b: Bits) (bits: Bits) : Bits
+Bits.mul.go a  Bits.e     bits = bits
+Bits.mul.go a (Bits.o bp) bits = Bits.mul.go (Bits.o a) bp bits
+Bits.mul.go a (Bits.i bp) bits = Bits.mul.go (Bits.o a) bp (Bits.add a bits)

@@ -1,0 +1,10 @@
+Bits.set (idx: Nat) (a: Bits) (b: Bits) : Bits
+Bits.set  Nat.zero     a  b          = Bits.set.aux a b
+Bits.set (Nat.succ ip) a  Bits.e     = a
+Bits.set (Nat.succ ip) a (Bits.o bp) = Bits.o (Bits.set ip a bp)
+Bits.set (Nat.succ ip) a (Bits.i bp) = Bits.i (Bits.set ip a bp)
+
+Bits.set.aux (a: Bits) (b: Bits) : Bits
+Bits.set.aux  Bits.e     b = b
+Bits.set.aux (Bits.o ap) b = Bits.o (Bits.set.aux ap (Bits.tail b))
+Bits.set.aux (Bits.i ap) b = Bits.i (Bits.set.aux ap (Bits.tail b))

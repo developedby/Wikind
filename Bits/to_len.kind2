@@ -1,0 +1,5 @@
+Bits.to_len (new_len: Nat) (bits: Bits) : Bits
+Bits.to_len  Nat.zero      bits       = Bits.e
+Bits.to_len (Nat.succ lp)  Bits.e     = Bits.o (Bits.to_len lp Bits.e)
+Bits.to_len (Nat.succ lp) (Bits.o bp) = Bits.o (Bits.to_len lp bp)
+Bits.to_len (Nat.succ lp) (Bits.i bp) = Bits.i (Bits.to_len lp bp)

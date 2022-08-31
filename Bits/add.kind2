@@ -1,9 +1,19 @@
 // Adds a bit structure to another
 // Example: (Bits.add (Bits.i Bits.e) (Bits.i (Bits.o Bits.e))) -> (Bits.i (Bits.i Bits.e))
-Bits.add (a: Bits) (b: Bits) : Bits
-Bits.add (Bits.e)        (b)             = (b)
-Bits.add (a)             (Bits.e)        = (a)
-Bits.add (Bits.o a.pred) (Bits.o b.pred) = (Bits.o (Bits.add a.pred b.pred))
-Bits.add (Bits.o a.pred) (Bits.i b.pred) = (Bits.i (Bits.add a.pred b.pred))
-Bits.add (Bits.i a.pred) (Bits.o b.pred) = (Bits.i (Bits.add a.pred b.pred))
-Bits.add (Bits.i a.pred) (Bits.i b.pred) = (Bits.o (Bits.inc (Bits.add a.pred b.pred)))
+Bits.add (a: Bits) (b: Bits) : Bits {
+  Bits.add.go a b Bool.false
+}
+
+Bits.add.go (a: Bits) (b: Bits) (carry: Bool) : Bits
+Bits.add.go  Bits.e      b          Bool.false = b
+Bits.add.go  Bits.e      b          Bool.true  = Bits.inc b
+Bits.add.go  a           Bits.e     Bool.false = a
+Bits.add.go  a           Bits.e     Bool.true  = Bits.inc a
+Bits.add.go (Bits.o ap) (Bits.o bp) Bool.false = Bits.o (Bits.add.go ap bp Bool.false)
+Bits.add.go (Bits.o ap) (Bits.o bp) Bool.true  = Bits.i (Bits.add.go ap bp Bool.false)
+Bits.add.go (Bits.o ap) (Bits.i bp) Bool.false = Bits.i (Bits.add.go ap bp Bool.false)
+Bits.add.go (Bits.o ap) (Bits.i bp) Bool.true  = Bits.o (Bits.add.go ap bp Bool.true)
+Bits.add.go (Bits.i ap) (Bits.o bp) Bool.false = Bits.i (Bits.add.go ap bp Bool.false)
+Bits.add.go (Bits.i ap) (Bits.o bp) Bool.true  = Bits.o (Bits.add.go ap bp Bool.true)
+Bits.add.go (Bits.i ap) (Bits.i bp) Bool.false = Bits.o (Bits.add.go ap bp Bool.true)
+Bits.add.go (Bits.i ap) (Bits.i bp) Bool.true  = Bits.i (Bits.add.go ap bp Bool.true)

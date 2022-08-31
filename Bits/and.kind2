@@ -1,0 +1,7 @@
+Bits.and (a: Bits) (b: Bits) : Bits
+Bits.and  Bits.e      b          = Bits.e
+Bits.and  a           Bits.e     = Bits.e
+Bits.and (Bits.o ap) (Bits.o bp) = Bits.o (Bits.and ap bp)
+Bits.and (Bits.o ap) (Bits.i bp) = Bits.o (Bits.and ap bp)
+Bits.and (Bits.i ap) (Bits.o bp) = Bits.o (Bits.and ap bp)
+Bits.and (Bits.i ap) (Bits.i bp) = Bits.i (Bits.and ap bp)

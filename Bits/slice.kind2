@@ -1,4 +1,6 @@
-// Takes a part of the bit structure between n and m
-// Example: (Bits.slice 1 2 (Bits.i (Bits.o (Bits.i (Bits.o Bits.e)))) -> (Bits.o (Bits.i Bits.e))
-Bits.slice (n: Nat) (m: Nat) (b: Bits) : Bits
-Bits.slice (n) (m) (b) = (Bits.take m (Bits.drop n b))
+// Takes a part of the bit structure between start and end
+// Example: (Bits.slice Nat.one Nat.two (Bits.i (Bits.o (Bits.i (Bits.o Bits.e)))) -> (Bits.o (Bits.i Bits.e))
+Bits.slice (start: Nat) (end: Nat) (bits: Bits) : Bits {
+  let len = (Nat.sub end start)
+  Bits.take len (Bits.drop start bits)
+}

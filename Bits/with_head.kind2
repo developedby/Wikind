@@ -1,0 +1,5 @@
+// Return a plus the head of b
+Bits.with_head (a: Bits) (b: Bits) : Bits
+Bits.with_head a  Bits.e     = a
+Bits.with_head a (Bits.o bp) = Bits.o a
+Bits.with_head a (Bits.i bp) = Bits.i a

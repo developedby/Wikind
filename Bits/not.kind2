@@ -1,0 +1,6 @@
+// Invert each bit
+// Example: (Bits.not (Bits.i Bits.e)) -> (Bits.o Bits.e)
+Bits.not (bits: Bits) : Bits
+Bits.not  Bits.e    = Bits.e
+Bits.not (Bits.o b) = Bits.i (Bits.not b)
+Bits.not (Bits.i b) = Bits.o (Bits.not b)

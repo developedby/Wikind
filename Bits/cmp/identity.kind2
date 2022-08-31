@@ -1,0 +1,34 @@
+Bits.cmp.identity
+  (x  : Bits)
+  (y  : Bits)
+  (j  : Cmp)
+  (h  : Equal (Bits.cmp x y) j)
+: Equal (Bits.cmp (Bits.snoc Bool.false x) y) j {
+  Bits.cmp.go.identity x y Cmp.eql j h
+}
+
+Bits.cmp.go.identity
+  (x  : Bits)
+  (y  : Bits)
+  (c  : Cmp)
+  (j  : Cmp)
+  (h  : Equal (Bits.cmp.go x y c) j)
+: Equal (Bits.cmp.go (Bits.snoc Bool.false x) y c) j
+
+Bits.cmp.go.identity  Bits.e      Bits.e     c j h = h
+Bits.cmp.go.identity  Bits.e     (Bits.o yp) c j h = h
+Bits.cmp.go.identity  Bits.e     (Bits.i yp) c j h = Equal.rewrite h (x => Equal _ x) (Bits.cmp.go.identity.aux yp)
+
+Bits.cmp.go.identity (Bits.o xp)  Bits.e     c j h = Bits.cmp.go.identity xp Bits.e c       j h
+Bits.cmp.go.identity (Bits.o xp) (Bits.o yp) c j h = Bits.cmp.go.identity xp yp     c       j h
+Bits.cmp.go.identity (Bits.o xp) (Bits.i yp) c j h = Bits.cmp.go.identity xp yp     Cmp.ltn j h
+
+Bits.cmp.go.identity (Bits.i xp)  Bits.e     c j h = h
+Bits.cmp.go.identity (Bits.i xp) (Bits.o yp) c j h = Bits.cmp.go.identity xp yp     Cmp.gtn j h
+Bits.cmp.go.identity (Bits.i xp) (Bits.i yp) c j h = Bits.cmp.go.identity xp yp     c       j h
+
+
+Bits.cmp.go.identity.aux (y: Bits) : Equal (Bits.cmp.go Bits.e y Cmp.ltn) Cmp.ltn
+Bits.cmp.go.identity.aux  Bits.e     = Equal.refl
+Bits.cmp.go.identity.aux (Bits.o yp) = Bits.cmp.go.identity.aux yp
+Bits.cmp.go.identity.aux (Bits.i yp) = Equal.refl

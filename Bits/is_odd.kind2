@@ -1,0 +1,4 @@
+Bits.is_odd (b: Bits) : Bool
+Bits.is_odd  Bits.e    = Bool.false
+Bits.is_odd (Bits.o b) = Bool.false
+Bits.is_odd (Bits.i b) = Bool.true

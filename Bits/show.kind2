@@ -1,0 +1,10 @@
+Bits.show (a: Bits) : Show
+Bits.show  Bits.e     = h => h
+Bits.show (Bits.o ap) = str =>
+  let next = String.cons 48 str
+  let func = (h: String) => (Bits.show ap) h
+  func next
+Bits.show (Bits.i ap) = str =>
+  let next = String.cons 49 str
+  let func = (h: String) => (Bits.show ap) h
+  func next
