@@ -10,7 +10,7 @@ User.Sipher.KGT.mint miner current_block (KDL.KGT.State.new last_mint balances) 
 // Constants 
 // -----------------------------------------------------------------------------
   // Total blocks per halving
-  let bk_base = U120.new 0 125000000
+  let bk_base = 125000000u120
 
   // Xp Per Halving Base Starts with "21000000000000000000" (21 Quintillion)
   let xp_base = U120.new 18 247412917076754432
@@ -21,12 +21,12 @@ User.Sipher.KGT.mint miner current_block (KDL.KGT.State.new last_mint balances) 
 
   // No experience can be obtained once halving reaches 38
   // This function becomes useless on block 64
-  if (U120.greater_equal halving (U120.new 0 64)) {
+  if (U120.greater_equal halving 64u120) {
     KDL.KGT.State.new last_mint balances
   } else { 
     let xp            = User.Sipher.KGT.xp xp_base bk_base current_block last_mint
     let new_value     = (x: U120) => U120.add xp x
-    let new_balance   = User.Sipher.PatriciaTree.mut balances miner (U120.new 0 0) new_value
+    let new_balance   = User.Sipher.PatriciaTree.mut balances miner 0u120 new_value
     KDL.KGT.State.new current_block new_balance
   }
 
@@ -44,7 +44,7 @@ User.Sipher.KGT.xp
 : U120
 User.Sipher.KGT.xp xp_base  bk_base current_block last_mint = 
   if (U120.greater_equal last_mint current_block) { 
-    U120.0
+    0u120
   } else {
     let halving = U120.div last_mint bk_base
     let value   = User.Sipher.KGT.XP_Per_Block xp_base halving bk_base
@@ -57,7 +57,7 @@ User.Sipher.KGT.XP_Per_Halving
   (xp_base         : U120)
   (current_halving : U120)
 : U120 {
-  U120.div xp_base (U120.shift_left (U120.new 0 1) current_halving)
+  U120.div xp_base (U120.shift_left 1u120 current_halving)
 }
 
 

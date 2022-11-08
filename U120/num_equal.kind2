@@ -1,2 +1,5 @@
 U120.num_equal (a: U120) (b: U120) : U120
-U120.num_equal (U120.new ahi alo) (U120.new bhi blo) = U120.new 0 (& (== ahi bhi) (== alo blo))
+
+// HVM Implementation as pairs of U60
+// U120.num_equal (a: U120) (b: U120) : U120
+// U120.num_equal (U120.new ahi alo) (U120.new bhi blo) = U60.to_u120 (& (== ahi bhi) (== alo blo))

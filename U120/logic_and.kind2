@@ -1,4 +1,4 @@
 U120.logic_and (a: U120) (b: U120) : U120
-U120.logic_and (U120.new 0 0) b              = (U120.new 0 0)
-U120.logic_and a              (U120.new 0 0) = (U120.new 0 0)
-U120.logic_and a              b              = (U120.new 0 1)
+U120.logic_and 0u120 b     = 0u120
+U120.logic_and a     0u120 = 0u120
+U120.logic_and a     b     = 1u120

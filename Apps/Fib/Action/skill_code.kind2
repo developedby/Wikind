@@ -4,7 +4,7 @@ Apps.Fib.Action.skill_code (Apps.Fib.State.new map tab) skill_id caster_id targe
   let tab_ent = Apps.Fib.Table.got tab caster_id
   let player  = Pair.snd tab_ent
   let center  = Apps.Fib.Pos.new (Apps.Fib.Player.pos.get_x player) (Apps.Fib.Player.pos.get_y player)
-  let comm    = (U120.add (U120.new 0 2) skill_id)
+  let comm    = (U120.add 2u120 skill_id)
   let data    = Apps.Fib.Pos.to_data center target
-  let action  = (U120.add caster_id (U120.add (U120.shift_left comm (U120.new 0 12)) (U120.shift_left data (U120.new 0 16))))
+  let action  = (U120.add caster_id (U120.add (U120.shift_left comm 12u120) (U120.shift_left data 16u120)))
   action

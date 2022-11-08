@@ -728,7 +728,7 @@ Main {
 
 
 
-//Goal: (Equal Bool (U120.less_than (U120.bitwise_and (U120.bitwise_or (U120.shift_left y (U120.new 0 9)) x) (U120.new 0 511)) (U120.new 0 320)) Bool.true)
+//Goal: (Equal Bool (U120.less_than (U120.bitwise_and (U120.bitwise_or (U120.shift_left y 9u120) x) 511u120) 320u120) Bool.true)
 
 List.reverse.involutive.aux <a> (xs: List a) (ys: List a) : Equal (List.reverse.go (List.reverse.go xs ys) []) (List.reverse.go ys xs)
 List.reverse.involutive.aux a (List.nil t)            ys = Equal.refl

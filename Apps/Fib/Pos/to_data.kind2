@@ -7,12 +7,12 @@ Apps.Fib.Pos.to_data (center: Apps.Fib.Pos) (target: Apps.Fib.Pos) : U120 {
   let func =
     (c => t => 
     if (U120.greater_than c t) {
-      (U120.bitwise_or (U120.new 0 8) (U120.sub c t))
+      (U120.bitwise_or 8u120 (U120.sub c t))
     }
     else {
       (U120.sub t c )
     }) :: U120 -> U120 -> U120
   let x = func cx tx
   let y = func cy ty
-  U120.bitwise_or x (U120.shift_left y (U120.new 0 4))
+  U120.bitwise_or x (U120.shift_left y 4u120)
 }

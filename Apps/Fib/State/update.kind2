@@ -50,7 +50,7 @@ Apps.Fib.State.update (Apps.Fib.State.new map tab) action =
   match Pair ent_tab {
     new =>
       let ent = ent_tab.snd
-      if (Bool.and (U120.equal ent (U120.new 0 0)) (U120.equal comm (U120.new 0 8))) {
+      if (Bool.and (U120.equal ent 0u120) (U120.equal comm 8u120)) {
         Apps.Fib.State.create_unit (Apps.Fib.State.new map tab) data id
       }
       else {
@@ -60,14 +60,14 @@ Apps.Fib.State.update (Apps.Fib.State.new map tab) action =
 
 #kdl_name = Fib_st_updcm
 Apps.Fib.State.update.command (state: Apps.Fib.State) (command: U120) (data: U120) (id: Apps.Fib.Id) (ent: Apps.Fib.Entity) : Apps.Fib.State
-Apps.Fib.State.update.command state (U120.new 0 0) data id ent = Apps.Fib.State.walk state data ent id
-Apps.Fib.State.update.command state (U120.new 0 1) data id ent = state // interact?
-Apps.Fib.State.update.command state (U120.new 0 2) data id ent = Apps.Fib.State.update.skill state (U120.new 0 0) data ent
-Apps.Fib.State.update.command state (U120.new 0 3) data id ent = Apps.Fib.State.update.skill state (U120.new 0 1) data ent
-Apps.Fib.State.update.command state (U120.new 0 4) data id ent = Apps.Fib.State.update.skill state (U120.new 0 2) data ent
-Apps.Fib.State.update.command state (U120.new 0 5) data id ent = Apps.Fib.State.update.skill state (U120.new 0 3) data ent
-Apps.Fib.State.update.command state (U120.new 0 6) data id ent = Apps.Fib.State.update.skill state (U120.new 0 4) data ent
-Apps.Fib.State.update.command state (U120.new 0 7) data id ent = Apps.Fib.State.update.skill state (U120.new 0 5) data ent
+Apps.Fib.State.update.command state 0u120 data id ent = Apps.Fib.State.walk state data ent id
+Apps.Fib.State.update.command state 1u120 data id ent = state // interact?
+Apps.Fib.State.update.command state 2u120 data id ent = Apps.Fib.State.update.skill state 0u120 data ent
+Apps.Fib.State.update.command state 3u120 data id ent = Apps.Fib.State.update.skill state 1u120 data ent
+Apps.Fib.State.update.command state 4u120 data id ent = Apps.Fib.State.update.skill state 2u120 data ent
+Apps.Fib.State.update.command state 5u120 data id ent = Apps.Fib.State.update.skill state 3u120 data ent
+Apps.Fib.State.update.command state 6u120 data id ent = Apps.Fib.State.update.skill state 4u120 data ent
+Apps.Fib.State.update.command state 7u120 data id ent = Apps.Fib.State.update.skill state 5u120 data ent
 
 #kdl_name = Fib_st_updsk
 Apps.Fib.State.update.skill (state: Apps.Fib.State) (skill_id: U120) (data: U120) (entity: Apps.Fib.Entity) : Apps.Fib.State {

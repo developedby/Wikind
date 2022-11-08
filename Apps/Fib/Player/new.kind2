@@ -11,8 +11,8 @@ Apps.Fib.Player.new
   (cd : U120)
   (skills : List U120)
   : Apps.Fib.Player {
-    let player = U120.new 0 0
-    let player = Apps.Fib.Player.pos.change player ((val : U120) => U120.add (U120.shift_left y (U120.new 0 8)) x)
+    let player = 0u120
+    let player = Apps.Fib.Player.pos.change player ((val : U120) => U120.add (U120.shift_left y 8u120) x)
     let player = Apps.Fib.Player.xp.change  player ((val : U120) => xp)
     let player = Apps.Fib.Player.hp.change  player ((val : U120) => hp)
     let player = Apps.Fib.Player.of.change  player ((val : U120) => of)
@@ -20,7 +20,7 @@ Apps.Fib.Player.new
     // let player = Apps.Fib.Player.sl.change  player ((val : U120) => sl)
     let player = Apps.Fib.Player.gd.change player ((x : U120) => gd)
     let player = Apps.Fib.Player.cd.change player ((x : U120) => cd)
-    let func   = ((skill_id : U120) => (acc : Pair U120 U120) => (Pair.new (Apps.Fib.Player.skills.change (Pair.fst acc) (Pair.snd acc) ((x : U120) => skill_id)) (U120.add (Pair.snd acc) (U120.new 0 1))))
-    let pair   = List.foldl U120 (Pair U120 U120) (Pair.new player (U120.new 0 0)) func skills
+    let func   = ((skill_id : U120) => (acc : Pair U120 U120) => (Pair.new (Apps.Fib.Player.skills.change (Pair.fst acc) (Pair.snd acc) ((x : U120) => skill_id)) (U120.add (Pair.snd acc) 1u120)))
+    let pair   = List.foldl U120 (Pair U120 U120) (Pair.new player 0u120) func skills
     Pair.fst pair
   }

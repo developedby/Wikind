@@ -7,5 +7,5 @@ User.Sipher.PatriciaTree.Proof.set_mut
   let map = User.Sipher.PatriciaTree.set map key (f value)
   User.Sipher.PatriciaTree.get map key) (
 
-  let map = User.Sipher.PatriciaTree.mut map key (U120.0) f
+  let map = User.Sipher.PatriciaTree.mut map key (0u120) f
   User.Sipher.PatriciaTree.get map key)

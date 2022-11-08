@@ -41,7 +41,7 @@ KDL.KGT.verification Bool.false from to value = do Kindelia.IO { return KDL.KGT.
 
 #kdl_name = KgtInit
 KDL.KGT.init : KDL.KGT.State {
-  (KDL.KGT.State.new (U120.new 0 0) User.Sipher.PatriciaTree.empty)
+  (KDL.KGT.State.new 0u120 User.Sipher.PatriciaTree.empty)
 }
 
 #kdl_name = KGT

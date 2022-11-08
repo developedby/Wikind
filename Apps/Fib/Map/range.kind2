@@ -1,6 +1,6 @@
 #kdl_name = Fib_map_rnge
 Apps.Fib.Map.range : Apps.Fib.Map {
-  Apps.Fib.Map.range.aux0 (U120.new 0 0) Apps.Fib.Map.Bases
+  Apps.Fib.Map.range.aux0 0u120 Apps.Fib.Map.Bases
 }
 
 Apps.Fib.Map.range.aux0 (n: U120) (bases: List Data.BaseTree.Base) : Data.BaseTree bases U120
@@ -13,5 +13,5 @@ Apps.Fib.Map.range.aux0 n (List.cons b Data.BaseTree.Base.5 t) =
   Data.BaseTree.Qui.tie (Data.BaseTree t U120) (b 0) (b 1) (b 2) (b 3) (b 4)
 
 Apps.Fib.Map.range.aux1 (m: U60) (x: U60) (n: U120) : U120 {
-  U120.add (U60.to_u120 x) (U120.mul n (U120.new 0 m))
+  U120.add (U60.to_u120 x) (U120.mul n (U60.to_u120 m))
 }

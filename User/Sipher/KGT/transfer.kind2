@@ -8,13 +8,13 @@ User.Sipher.KGT.transfer
 : KDL.KGT.State
 
 // Sender can't be zero address
-User.Sipher.KGT.transfer (U120.new 0 0) to   value state = state
+User.Sipher.KGT.transfer 0u120 to   value state = state
 
 // Receiver can't be zero address
-User.Sipher.KGT.transfer from (U120.new 0 0) value state = state
+User.Sipher.KGT.transfer from 0u120 value state = state
 
 // You can't make a zero value transaction
-User.Sipher.KGT.transfer from to (U120.new 0 0)    state = state
+User.Sipher.KGT.transfer from to 0u120    state = state
 
 // If the wallets aren't invalid and the transaction isn't zero, proceeds to the
 // next verification
@@ -55,6 +55,6 @@ User.Sipher.KGT.transfer.finish Bool.true  sender_money transaction_value from t
 
   // Adds the value to the receiver
   let new_value = (x: U120) => U120.add transaction_value x
-  let balances  = User.Sipher.PatriciaTree.mut balances to (U120.new 0 0) new_value
+  let balances  = User.Sipher.PatriciaTree.mut balances to 0u120 new_value
   
   KDL.KGT.State.new last_mint balances
