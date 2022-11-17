@@ -1,3 +1,5 @@
+/// Returns the most significant 60 bits of a U120 as a U60
+/// Replaced by the to-hvm compiler to a more efficient implementations
 #inline
 U120.high (n: U120) : U60 {
     (U120.to_u60 (U120.shift_right n 60))
