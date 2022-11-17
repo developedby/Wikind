@@ -13,7 +13,7 @@ User.Sipher.KGT.mint miner current_block (KDL.KGT.State.new last_mint balances) 
   let bk_base = 125000000u120
 
   // Xp Per Halving Base Starts with "21000000000000000000" (21 Quintillion)
-  let xp_base = U120.new 18 247412917076754432
+  let xp_base = 21000000000000000000u120
 // -----------------------------------------------------------------------------
 
   // Halving number is increased by 1 every 125000000 (125 Million) blocks

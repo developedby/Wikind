@@ -1,4 +1,5 @@
 // U120 addition
+/// Implementation given by compiler
 U120.add (a: U120) (b: U120) : U120
 
 // HVM Implementation as pairs of U60

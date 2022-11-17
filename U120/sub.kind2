@@ -1,4 +1,5 @@
-// U120 subtraction
+/// U120 subtraction
+/// Implementation given by compiler
 U120.sub (a: U120) (b: U120) : U120
 
 // HVM Implementation as pairs of U60

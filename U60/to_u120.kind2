@@ -1,4 +1,4 @@
-#inline
-U60.to_u120 (num: U60) : U120 {
-  U60.to_u120 num
-}
+/// Creates a U120 from a U60 by filling the most significant bits with zero
+/// and the least significant ones with `num`.
+/// Implementation given by compiler
+U60.to_u120 (num: U60) : U120

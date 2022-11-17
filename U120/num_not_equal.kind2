@@ -1,3 +1,5 @@
+/// 1u120 if `a != b`, 0u120 otherwise
+/// Implementation given by compiler
 U120.num_not_equal (a: U120) (b: U120) : U120
 
 // HVM Implementation as pairs of U60

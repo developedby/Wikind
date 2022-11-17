@@ -1,3 +1,6 @@
+/// Shifts `num` to the right by `shf` bits (divide by 2^shf)
+/// Undefined result if `shf` is greater equal to 120
+/// Implementation given by compiler
 U120.shift_right (num: U120) (shf: U120) : U120
 
 // HVM Implementation as pairs of U60

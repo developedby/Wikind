@@ -1,1 +1,3 @@
+/// Convert a U120 to a U60 by taking only the lowest bits
+/// Implementation given by compiler
 U120.to_u60 (n: U120) : U60

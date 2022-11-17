@@ -1,0 +1,4 @@
+#inline
+U60.num_less_than (a: U60) (b: U60) : U60 {
+    (< a b)
+}

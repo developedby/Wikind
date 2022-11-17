@@ -1,3 +1,5 @@
+/// U120 multiplication
+/// Implementation given by compiler
 U120.mul (a: U120) (b: U120) : U120
 
 // HVM Implementation as pairs of U60

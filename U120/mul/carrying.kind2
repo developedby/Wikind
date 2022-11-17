@@ -1,5 +1,9 @@
 U120.mul.carrying (a: U120) (b: U120) : U240
-U120.mul.carrying (U120.new ahi alo) (U120.new bhi blo) =
+U120.mul.carrying a b =
+  let alo = U120.low a
+  let ahi = U120.high a
+  let blo = U120.low b
+  let bhi = U120.high a
   let mul0 = U60.mul.carrying alo blo  // [1 0]
   let mul1 = U60.mul.carrying alo bhi  // [2 1]
   let mul2 = U60.mul.carrying ahi blo  // [2 1]

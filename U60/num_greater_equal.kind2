@@ -1,0 +1,4 @@
+#inline
+U60.num_greater_equal (a: U60) (b: U60) : U60 {
+    (>= a b)
+}

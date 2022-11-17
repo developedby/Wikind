@@ -1,3 +1,6 @@
+/// U120 division
+/// Causes runtime error if `rem` is zero
+/// Implementation given by compiler
 U120.div (num: U120) (rem: U120) : U120
 
 // HVM Implementation as pairs of U60

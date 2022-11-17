@@ -1,16 +1,13 @@
 U120.show (num: U120) : Show
 U120.show 0u120 = str => String.cons '0' str
 U120.show num   = str =>
-  let ten = 10u120
-  match Pair dm = U120.div_mod num ten { new =>
-    let digit = U120.low dm.snd
-    let rest = dm.fst
-    let next = String.cons (+ '0' digit) str
-    let func = 
-      (if U120.less_than num ten {
-        (h: String) => h
-      } else {
-        (h: String) => (U120.show rest) h
-      }) :: String -> String
-    func next
-  }
+  let rest = (U120.div num 10u120)
+  let mod  = (U120.mod num 10u120)
+  let digit = U120.to_u60 mod
+  let rest = div
+  let next = String.cons (U60.unsafe_add '0' digit) str
+  let func = (U120.if (U120.numeric_equal rest 0u120)
+    ((h: String) => h)
+    ((h: String) => (U120.show rest) h)
+  ) :: String -> String
+  func next

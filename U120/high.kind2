@@ -1,3 +1,4 @@
+#inline
 U120.high (n: U120) : U60 {
     (U120.to_u60 (U120.shift_right n 60))
 }

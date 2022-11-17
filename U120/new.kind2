@@ -1,3 +1,8 @@
+/// Creates a U120 by concatenating two U60s
+/// Replaced by the to-hvm compiler with something more efficient
 U120.new (hi: U60) (lo: U60) : U120 {
-    (U120.add (U120.shift_left hi 60u120) lo)
+    (U120.bitwise_or
+        (U120.shift_left (U60.to_u120 hi) 60u120)
+        (U60.to_u120 lo)
+    )
 }
